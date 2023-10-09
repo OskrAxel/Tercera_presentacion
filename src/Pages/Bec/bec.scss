@@ -1,0 +1,44 @@
+#main_content {
+  padding: 40px;
+}
+#ali {
+  bottom: 0px;
+  position: absolute;
+}
+.tra {
+  font-size: 1rem;
+  border-radius: 3px;
+  background-color: rgba(232, 232, 232, 0.65);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.91);
+}
+
+.title-form {
+  padding: 0.5rem;
+  background: rgba(3, 87, 77, 0.8);
+  color: rgb(255 255 255 / 80%);
+  text-align: center;
+}
+#subt {
+  padding: 20px;
+}
+.page-item.active .page-link {
+  z-index: 3;
+  color: #ffffff;
+  background-color: #eb7a37;
+  border-color: #eb7a37;
+}
+.tr1 {
+  border-radius: 3px;
+  vertical-align: initial;
+}
+#colu {
+  flex: 0 0;
+  padding: 10rem !important;
+}
+#but {
+  background: #eb7a37;
+  border-color: #eb7a37;
+}
+#tabl {
+  --bs-table-bg: rgba(232, 232, 232, 0.65);
+}
