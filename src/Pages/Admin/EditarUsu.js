@@ -47,14 +47,14 @@ export default function ListUser() {
               </th>
               <td>
                 <input
-                  value={inputs.name}
+                  value={inputs.nombre}
                   type="text"
                   name="nombre"
                   onChange={handleChange}
                 />
                 <br />
                 <input
-                  value={inputs.name}
+                  value={inputs.apellido}
                   type="text"
                   name="apellido"
                   onChange={handleChange}
@@ -80,7 +80,7 @@ export default function ListUser() {
               </th>
               <td>
                 <input
-                  value={inputs.mobile}
+                  value={inputs.celular}
                   type="text"
                   name="celular"
                   onChange={handleChange}

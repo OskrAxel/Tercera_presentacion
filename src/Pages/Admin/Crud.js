@@ -1,61 +1,125 @@
-import axios from "axios";
-import * as FaIcons from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { Table, Button } from "reactstrap";
+import * as FaIcons from "react-icons/fa";
+import axios from "axios";
 import "../Bec/bec.scss";
 
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+function ListUser() {
+  const baseUrl = "http://localhost:80/api/users/";
+  const [data, setData] = useState([]);
+  const [modalInsertar, setModalInsertar] = useState(false);
+  const [modalEditar, setModalEditar] = useState(false);
+  const [modalEliminar, setModalEliminar] = useState(false);
+  const [frameworkSeleccionado, setFrameworkSeleccionado] = useState({
+    id: "",
+    nombre: "",
+    lanzamiento: "",
+    desarrollador: "",
+  });
 
-import { useNavigate } from "react-router-dom";
-
-export default function ListUser() {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  function getUsers() {
-    axios.get("http://localhost:80/api/users/").then(function (response) {
-      console.log(response.data);
-      setUsers(response.data);
-    });
-  }
-
-  const deleteUser = (id) => {
-    axios
-      .delete(`http://localhost:80/api/user/${id}/delete`)
-      .then(function (response) {
-        console.log(response.data);
-        getUsers();
-      });
-  };
-  const navigate = useNavigate();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    axios
-      .post("http://localhost:80/api/user/save", inputs)
-      .then(function (response) {
-        console.log(response.data);
-        abrirCerrarModalInsertar();
-        getUsers();
-        navigate("/");
-      });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFrameworkSeleccionado((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(frameworkSeleccionado);
   };
 
   const abrirCerrarModalInsertar = () => {
     setModalInsertar(!modalInsertar);
   };
-  const [modalInsertar, setModalInsertar] = useState(false);
 
-  const [inputs, setInputs] = useState([]);
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+  const abrirCerrarModalEditar = () => {
+    setModalEditar(!modalEditar);
   };
+
+  const abrirCerrarModalEliminar = () => {
+    setModalEliminar(!modalEliminar);
+  };
+
+  const peticionGet = async () => {
+    await axios
+      .get(baseUrl)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const peticionPost = async () => {
+    var f = new FormData();
+    f.append("nombre", frameworkSeleccionado.nombre);
+    f.append("apellido", frameworkSeleccionado.apellido);
+    f.append("email", frameworkSeleccionado.email);
+    f.append("password", frameworkSeleccionado.password);
+    f.append("celular", frameworkSeleccionado.celular);
+    f.append("METHOD", "POST");
+    await axios
+      .post(baseUrl, f)
+      .then((response) => {
+        setData(data.concat(response.data));
+        abrirCerrarModalInsertar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const peticionPut = async () => {
+    var f = new FormData();
+    f.append("nombre", frameworkSeleccionado.nombre);
+    f.append("lanzamiento", frameworkSeleccionado.lanzamiento);
+    f.append("desarrollador", frameworkSeleccionado.desarrollador);
+    f.append("METHOD", "PUT");
+    await axios
+      .post(baseUrl, f, { params: { id: frameworkSeleccionado.id } })
+      .then((response) => {
+        var dataNueva = data;
+        dataNueva.map((framework) => {
+          if (framework.id === frameworkSeleccionado.id) {
+            framework.nombre = frameworkSeleccionado.nombre;
+            framework.lanzamiento = frameworkSeleccionado.lanzamiento;
+            framework.desarrollador = frameworkSeleccionado.desarrollador;
+          }
+        });
+        setData(dataNueva);
+        abrirCerrarModalEditar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const peticionDelete = async () => {
+    var f = new FormData();
+    f.append("METHOD", "DELETE");
+    await axios
+      .post(baseUrl, f, { params: { id: frameworkSeleccionado.id } })
+      .then((response) => {
+        setData(
+          data.filter((framework) => framework.id !== frameworkSeleccionado.id)
+        );
+        abrirCerrarModalEliminar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const seleccionarFramework = (framework, caso) => {
+    setFrameworkSeleccionado(framework);
+
+    caso === "Editar" ? abrirCerrarModalEditar() : abrirCerrarModalEliminar();
+  };
+
+  useEffect(() => {
+    peticionGet();
+  }, []);
 
   return (
     <div id="main_content">
@@ -68,11 +132,14 @@ export default function ListUser() {
           <Button
             color="success"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}>
+            onClick={() => abrirCerrarModalInsertar()}
+          >
             <FaIcons.FaPlus /> Añadir
           </Button>
           {/* </Link> */}
         </div>
+        <br />
+        <br />
         <Table responsive="sm" id="tabl">
           <thead>
             <tr>
@@ -86,23 +153,28 @@ export default function ListUser() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, key) => (
-              <tr key={key}>
-                <td>{user.id}</td>
-                <td>{user.nombre}</td>
-                <td>{user.apellido}</td>
-                <td>{user.email}</td>
-                <td>{user.password}</td>
-                <td>{user.celular}</td>
+            {data.map((framework) => (
+              <tr key={framework.id}>
+                <td>{framework.id}</td>
+                <td>{framework.nombre}</td>
+                <td>{framework.apellido}</td>
+                <td>{framework.email}</td>
+                <td>{framework.password}</td>
+                <td>{framework.celular}</td>
                 <td>
-                  <Link
-                    to={`user/${user.id}/edit`}
-                    style={{ marginRight: "10px" }}>
-                    <Button color="warning">Editar</Button>
-                  </Link>
-                  <Link onClick={() => deleteUser(user.id)}>
-                    <Button color="danger">Eliminar</Button>
-                  </Link>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => seleccionarFramework(framework, "Editar")}
+                  >
+                    Editar
+                  </button>{" "}
+                  {"  "}
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => seleccionarFramework(framework, "Eliminar")}
+                  >
+                    Eliminar
+                  </button>
                 </td>
               </tr>
             ))}
@@ -110,10 +182,10 @@ export default function ListUser() {
         </Table>
 
         <Modal isOpen={modalInsertar}>
-          <ModalHeader>Crear Usuario</ModalHeader>
+          <ModalHeader>Insertar Framework</ModalHeader>
           <ModalBody>
             <div className="form-group">
-              <label>Nombres: </label>
+              <label>Nombre: </label>
               <br />
               <input
                 type="text"
@@ -122,7 +194,7 @@ export default function ListUser() {
                 onChange={handleChange}
               />
               <br />
-              <label>Apellidos: </label>
+              <label>Apellido: </label>
               <br />
               <input
                 type="text"
@@ -161,13 +233,87 @@ export default function ListUser() {
             </div>
           </ModalBody>
           <ModalFooter>
-            <button className="btn btn-primary" onClick={handleSubmit}>
+            <Button color="success" size="lg" onClick={() => peticionPost()}>
               Guardar
+            </Button>
+            <Button
+              color="danger"
+              size="lg"
+              onClick={() => abrirCerrarModalInsertar()}
+            >
+              Cancelar
+            </Button>
+          </ModalFooter>
+        </Modal>
+
+        <Modal isOpen={modalEditar}>
+          <ModalHeader>Editar Framework</ModalHeader>
+          <ModalBody>
+            <div className="form-group">
+              <label>Nombre: </label>
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                name="nombre"
+                onChange={handleChange}
+                value={frameworkSeleccionado && frameworkSeleccionado.nombre}
+              />
+              <br />
+              <label>Lanzamiento: </label>
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                name="lanzamiento"
+                onChange={handleChange}
+                value={
+                  frameworkSeleccionado && frameworkSeleccionado.lanzamiento
+                }
+              />
+              <br />
+              <label>Desarrollador: </label>
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                name="desarrollador"
+                onChange={handleChange}
+                value={
+                  frameworkSeleccionado && frameworkSeleccionado.desarrollador
+                }
+              />
+              <br />
+            </div>
+          </ModalBody>
+          <ModalFooter>
+            <button className="btn btn-primary" onClick={() => peticionPut()}>
+              Editar
             </button>
+            {"   "}
             <button
               className="btn btn-danger"
-              onClick={() => abrirCerrarModalInsertar()}>
+              onClick={() => abrirCerrarModalEditar()}
+            >
               Cancelar
+            </button>
+          </ModalFooter>
+        </Modal>
+
+        <Modal isOpen={modalEliminar}>
+          <ModalBody>
+            ¿Estás seguro que deseas eliminar el Framework{" "}
+            {frameworkSeleccionado && frameworkSeleccionado.nombre}?
+          </ModalBody>
+          <ModalFooter>
+            <button className="btn btn-danger" onClick={() => peticionDelete()}>
+              Sí
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => abrirCerrarModalEliminar()}
+            >
+              No
             </button>
           </ModalFooter>
         </Modal>
@@ -175,3 +321,5 @@ export default function ListUser() {
     </div>
   );
 }
+
+export default ListUser;
