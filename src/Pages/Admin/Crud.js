@@ -7,7 +7,7 @@ import axios from "axios";
 import "../Bec/bec.scss";
 
 function ListUser() {
-  const baseUrl = "http://localhost:80/api/users/";
+  const baseUrl = "http://localhost:80/api/";
   const [data, setData] = useState([]);
   const [modalInsertar, setModalInsertar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
@@ -15,8 +15,10 @@ function ListUser() {
   const [frameworkSeleccionado, setFrameworkSeleccionado] = useState({
     id: "",
     nombre: "",
-    lanzamiento: "",
-    desarrollador: "",
+    apellido: "",
+    email: "",
+    password: "",
+    celular: "",
   });
 
   const handleChange = (e) => {
@@ -73,8 +75,10 @@ function ListUser() {
   const peticionPut = async () => {
     var f = new FormData();
     f.append("nombre", frameworkSeleccionado.nombre);
-    f.append("lanzamiento", frameworkSeleccionado.lanzamiento);
-    f.append("desarrollador", frameworkSeleccionado.desarrollador);
+    f.append("apellido", frameworkSeleccionado.apellido);
+    f.append("email", frameworkSeleccionado.email);
+    f.append("password", frameworkSeleccionado.password);
+    f.append("celular", frameworkSeleccionado.celular);
     f.append("METHOD", "PUT");
     await axios
       .post(baseUrl, f, { params: { id: frameworkSeleccionado.id } })
@@ -83,8 +87,10 @@ function ListUser() {
         dataNueva.map((framework) => {
           if (framework.id === frameworkSeleccionado.id) {
             framework.nombre = frameworkSeleccionado.nombre;
-            framework.lanzamiento = frameworkSeleccionado.lanzamiento;
-            framework.desarrollador = frameworkSeleccionado.desarrollador;
+            framework.apellido = frameworkSeleccionado.apellido;
+            framework.email = frameworkSeleccionado.email;
+            framework.password = frameworkSeleccionado.password;
+            framework.celular = frameworkSeleccionado.celular;
           }
         });
         setData(dataNueva);
@@ -185,7 +191,7 @@ function ListUser() {
           <ModalHeader>Insertar Framework</ModalHeader>
           <ModalBody>
             <div className="form-group">
-              <label>Nombre: </label>
+              <label>Nombres: </label>
               <br />
               <input
                 type="text"
@@ -194,7 +200,7 @@ function ListUser() {
                 onChange={handleChange}
               />
               <br />
-              <label>Apellido: </label>
+              <label>Apellidos: </label>
               <br />
               <input
                 type="text"
@@ -250,7 +256,7 @@ function ListUser() {
           <ModalHeader>Editar Framework</ModalHeader>
           <ModalBody>
             <div className="form-group">
-              <label>Nombre: </label>
+              <label>Nombres: </label>
               <br />
               <input
                 type="text"
@@ -260,28 +266,44 @@ function ListUser() {
                 value={frameworkSeleccionado && frameworkSeleccionado.nombre}
               />
               <br />
-              <label>Lanzamiento: </label>
+              <label>Apellidos: </label>
               <br />
               <input
                 type="text"
                 className="form-control"
-                name="lanzamiento"
+                name="apellido"
                 onChange={handleChange}
-                value={
-                  frameworkSeleccionado && frameworkSeleccionado.lanzamiento
-                }
+                value={frameworkSeleccionado && frameworkSeleccionado.apellido}
               />
               <br />
-              <label>Desarrollador: </label>
+              <label>Correo: </label>
               <br />
               <input
                 type="text"
                 className="form-control"
-                name="desarrollador"
+                name="email"
                 onChange={handleChange}
-                value={
-                  frameworkSeleccionado && frameworkSeleccionado.desarrollador
-                }
+                value={frameworkSeleccionado && frameworkSeleccionado.email}
+              />
+              <br />
+              <label>Clave: </label>
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                name="password"
+                onChange={handleChange}
+                value={frameworkSeleccionado && frameworkSeleccionado.password}
+              />
+              <br />
+              <label>Celular: </label>
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                name="celular"
+                onChange={handleChange}
+                value={frameworkSeleccionado && frameworkSeleccionado.celular}
               />
               <br />
             </div>
@@ -302,7 +324,7 @@ function ListUser() {
 
         <Modal isOpen={modalEliminar}>
           <ModalBody>
-            ¿Estás seguro que deseas eliminar el Framework{" "}
+            ¿Estás seguro que deseas eliminar el Usuario{" "}
             {frameworkSeleccionado && frameworkSeleccionado.nombre}?
           </ModalBody>
           <ModalFooter>
