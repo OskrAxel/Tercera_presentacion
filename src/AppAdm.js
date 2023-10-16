@@ -1,32 +1,26 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.scss";
 import NavbarNav from "../src/components/NavbarNav";
-import SidebarAdm from "../src/components/SidebarAdm";
 import CreateUser from "./Pages/Admin/CrearUsu";
 import EditUser from "./Pages/Admin/EditarUsu";
 import ListUser from "./Pages/Admin/Crud";
+import Dashboard from "./Pages/Admin/dashboard";
+import ListUserAdm from "./Pages/Admin/Crud-Adm";
+import ListUserPat from "./Pages/Admin/Crud-Pat";
+import Informe from "./Pages/Admin/informe";
 
 function AppAdm() {
   return (
     <BrowserRouter>
-      {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Listado Usuarios</Link>
-            </li>
-            <li>
-              <Link to="user/create">Crear Usuario</Link>
-            </li>
-          </ul>
-        </nav> */}
       <div className="flex">
-        <SidebarAdm />
         <div className="content w-100">
           <NavbarNav />
           <Routes>
-            <Route index element={<ListUser />} />
-            <Route path="user/create" element={<CreateUser />} />
-            <Route path="user/:id/edit" element={<EditUser />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="usuarios" element={<ListUser />} />
+            <Route path="personal" element={<ListUserAdm />} />
+            <Route path="patrocinador" element={<ListUserPat />} />
+            <Route path="informe" element={<Informe />} />
           </Routes>
         </div>
       </div>

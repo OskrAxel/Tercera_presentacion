@@ -13,6 +13,8 @@ import {
   DropdownItem,
 } from "reactstrap";
 
+import SidebarAdm from "./SidebarAdm";
+
 function NavbarNav(args) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -21,6 +23,7 @@ function NavbarNav(args) {
   return (
     <div>
       <Navbar expand="md" {...args}>
+        <SidebarAdm />
         <NavbarBrand href="/" className="text-light">
           <img
             src={Logo}
