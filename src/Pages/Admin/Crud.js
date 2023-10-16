@@ -12,22 +12,22 @@ function ListUser() {
   const [modalInsertar, setModalInsertar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
-  const [frameworkSeleccionado, setFrameworkSeleccionado] = useState({
+  const [usuarioSeleccionado, setusuarioSeleccionado] = useState({
     id: "",
     nombre: "",
     apellido: "",
     email: "",
-    password: "",
+    contraseña: "",
     celular: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFrameworkSeleccionado((prevState) => ({
+    setusuarioSeleccionado((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-    console.log(frameworkSeleccionado);
+    console.log(usuarioSeleccionado);
   };
 
   const abrirCerrarModalInsertar = () => {
@@ -55,11 +55,11 @@ function ListUser() {
 
   const peticionPost = async () => {
     var f = new FormData();
-    f.append("nombre", frameworkSeleccionado.nombre);
-    f.append("apellido", frameworkSeleccionado.apellido);
-    f.append("email", frameworkSeleccionado.email);
-    f.append("password", frameworkSeleccionado.password);
-    f.append("celular", frameworkSeleccionado.celular);
+    f.append("nombre", usuarioSeleccionado.nombre);
+    f.append("apellido", usuarioSeleccionado.apellido);
+    f.append("email", usuarioSeleccionado.email);
+    f.append("contraseña", usuarioSeleccionado.contraseña);
+    f.append("celular", usuarioSeleccionado.celular);
     f.append("METHOD", "POST");
     await axios
       .post(baseUrl, f)
@@ -74,23 +74,23 @@ function ListUser() {
 
   const peticionPut = async () => {
     var f = new FormData();
-    f.append("nombre", frameworkSeleccionado.nombre);
-    f.append("apellido", frameworkSeleccionado.apellido);
-    f.append("email", frameworkSeleccionado.email);
-    f.append("password", frameworkSeleccionado.password);
-    f.append("celular", frameworkSeleccionado.celular);
+    f.append("nombre", usuarioSeleccionado.nombre);
+    f.append("apellido", usuarioSeleccionado.apellido);
+    f.append("email", usuarioSeleccionado.email);
+    f.append("contraseña", usuarioSeleccionado.contraseña);
+    f.append("celular", usuarioSeleccionado.celular);
     f.append("METHOD", "PUT");
     await axios
-      .post(baseUrl, f, { params: { id: frameworkSeleccionado.id } })
+      .post(baseUrl, f, { params: { id: usuarioSeleccionado.id } })
       .then((response) => {
         var dataNueva = data;
-        dataNueva.map((framework) => {
-          if (framework.id === frameworkSeleccionado.id) {
-            framework.nombre = frameworkSeleccionado.nombre;
-            framework.apellido = frameworkSeleccionado.apellido;
-            framework.email = frameworkSeleccionado.email;
-            framework.password = frameworkSeleccionado.password;
-            framework.celular = frameworkSeleccionado.celular;
+        dataNueva.map((Usuario) => {
+          if (Usuario.id === usuarioSeleccionado.id) {
+            Usuario.nombre = usuarioSeleccionado.nombre;
+            Usuario.apellido = usuarioSeleccionado.apellido;
+            Usuario.email = usuarioSeleccionado.email;
+            Usuario.contraseña = usuarioSeleccionado.contraseña;
+            Usuario.celular = usuarioSeleccionado.celular;
           }
         });
         setData(dataNueva);
@@ -105,10 +105,10 @@ function ListUser() {
     var f = new FormData();
     f.append("METHOD", "DELETE");
     await axios
-      .post(baseUrl, f, { params: { id: frameworkSeleccionado.id } })
+      .post(baseUrl, f, { params: { id: usuarioSeleccionado.id } })
       .then((response) => {
         setData(
-          data.filter((framework) => framework.id !== frameworkSeleccionado.id)
+          data.filter((Usuario) => Usuario.id !== usuarioSeleccionado.id)
         );
         abrirCerrarModalEliminar();
       })
@@ -117,8 +117,8 @@ function ListUser() {
       });
   };
 
-  const seleccionarFramework = (framework, caso) => {
-    setFrameworkSeleccionado(framework);
+  const seleccionarUsuario = (Usuario, caso) => {
+    setusuarioSeleccionado(Usuario);
 
     caso === "Editar" ? abrirCerrarModalEditar() : abrirCerrarModalEliminar();
   };
@@ -138,8 +138,7 @@ function ListUser() {
           <Button
             color="success"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}
-          >
+            onClick={() => abrirCerrarModalInsertar()}>
             <FaIcons.FaPlus /> Añadir
           </Button>
           {/* </Link> */}
@@ -148,7 +147,7 @@ function ListUser() {
         <br />
         <Table responsive="sm" id="tabl">
           <thead>
-            <tr>
+            <tr className="text-center">
               <th>#</th>
               <th>Nombres</th>
               <th>Apellidos</th>
@@ -159,26 +158,24 @@ function ListUser() {
             </tr>
           </thead>
           <tbody>
-            {data.map((framework) => (
-              <tr key={framework.id}>
-                <td>{framework.id}</td>
-                <td>{framework.nombre}</td>
-                <td>{framework.apellido}</td>
-                <td>{framework.email}</td>
-                <td>{framework.password}</td>
-                <td>{framework.celular}</td>
+            {data.map((Usuario) => (
+              <tr className="text-center" key={Usuario.id}>
+                <td>{Usuario.id}</td>
+                <td>{Usuario.nombre}</td>
+                <td>{Usuario.apellido}</td>
+                <td>{Usuario.email}</td>
+                <td>{Usuario.contraseña}</td>
+                <td>{Usuario.celular}</td>
                 <td>
                   <button
-                    className="btn btn-primary"
-                    onClick={() => seleccionarFramework(framework, "Editar")}
-                  >
+                    className="btn btn-warning"
+                    onClick={() => seleccionarUsuario(Usuario, "Editar")}>
                     Editar
                   </button>{" "}
                   {"  "}
                   <button
                     className="btn btn-danger"
-                    onClick={() => seleccionarFramework(framework, "Eliminar")}
-                  >
+                    onClick={() => seleccionarUsuario(Usuario, "Eliminar")}>
                     Eliminar
                   </button>
                 </td>
@@ -188,7 +185,7 @@ function ListUser() {
         </Table>
 
         <Modal isOpen={modalInsertar}>
-          <ModalHeader>Insertar Framework</ModalHeader>
+          <ModalHeader>Insertar Usuario</ModalHeader>
           <ModalBody>
             <div className="form-group">
               <label>Nombres: </label>
@@ -223,7 +220,7 @@ function ListUser() {
               <input
                 type="text"
                 className="form-control"
-                name="password"
+                name="contraseña"
                 onChange={handleChange}
               />
               <br />
@@ -245,15 +242,14 @@ function ListUser() {
             <Button
               color="danger"
               size="lg"
-              onClick={() => abrirCerrarModalInsertar()}
-            >
+              onClick={() => abrirCerrarModalInsertar()}>
               Cancelar
             </Button>
           </ModalFooter>
         </Modal>
 
         <Modal isOpen={modalEditar}>
-          <ModalHeader>Editar Framework</ModalHeader>
+          <ModalHeader>Editar Usuario</ModalHeader>
           <ModalBody>
             <div className="form-group">
               <label>Nombres: </label>
@@ -263,7 +259,7 @@ function ListUser() {
                 className="form-control"
                 name="nombre"
                 onChange={handleChange}
-                value={frameworkSeleccionado && frameworkSeleccionado.nombre}
+                value={usuarioSeleccionado && usuarioSeleccionado.nombre}
               />
               <br />
               <label>Apellidos: </label>
@@ -273,7 +269,7 @@ function ListUser() {
                 className="form-control"
                 name="apellido"
                 onChange={handleChange}
-                value={frameworkSeleccionado && frameworkSeleccionado.apellido}
+                value={usuarioSeleccionado && usuarioSeleccionado.apellido}
               />
               <br />
               <label>Correo: </label>
@@ -283,7 +279,7 @@ function ListUser() {
                 className="form-control"
                 name="email"
                 onChange={handleChange}
-                value={frameworkSeleccionado && frameworkSeleccionado.email}
+                value={usuarioSeleccionado && usuarioSeleccionado.email}
               />
               <br />
               <label>Clave: </label>
@@ -291,9 +287,9 @@ function ListUser() {
               <input
                 type="text"
                 className="form-control"
-                name="password"
+                name="contraseña"
                 onChange={handleChange}
-                value={frameworkSeleccionado && frameworkSeleccionado.password}
+                value={usuarioSeleccionado && usuarioSeleccionado.contraseña}
               />
               <br />
               <label>Celular: </label>
@@ -303,7 +299,7 @@ function ListUser() {
                 className="form-control"
                 name="celular"
                 onChange={handleChange}
-                value={frameworkSeleccionado && frameworkSeleccionado.celular}
+                value={usuarioSeleccionado && usuarioSeleccionado.celular}
               />
               <br />
             </div>
@@ -315,8 +311,7 @@ function ListUser() {
             {"   "}
             <button
               className="btn btn-danger"
-              onClick={() => abrirCerrarModalEditar()}
-            >
+              onClick={() => abrirCerrarModalEditar()}>
               Cancelar
             </button>
           </ModalFooter>
@@ -325,7 +320,7 @@ function ListUser() {
         <Modal isOpen={modalEliminar}>
           <ModalBody>
             ¿Estás seguro que deseas eliminar el Usuario{" "}
-            {frameworkSeleccionado && frameworkSeleccionado.nombre}?
+            {usuarioSeleccionado && usuarioSeleccionado.nombre}?
           </ModalBody>
           <ModalFooter>
             <button className="btn btn-danger" onClick={() => peticionDelete()}>
@@ -333,8 +328,7 @@ function ListUser() {
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => abrirCerrarModalEliminar()}
-            >
+              onClick={() => abrirCerrarModalEliminar()}>
               No
             </button>
           </ModalFooter>

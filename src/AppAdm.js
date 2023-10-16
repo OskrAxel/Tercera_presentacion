@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.scss";
 import NavbarNav from "../src/components/NavbarNav";
-import Sidebar from "../src/components/Sidebar";
+import SidebarAdm from "../src/components/SidebarAdm";
 import CreateUser from "./Pages/Admin/CrearUsu";
 import EditUser from "./Pages/Admin/EditarUsu";
 import ListUser from "./Pages/Admin/Crud";
@@ -20,7 +20,7 @@ function AppAdm() {
           </ul>
         </nav> */}
       <div className="flex">
-        <Sidebar />
+        <SidebarAdm />
         <div className="content w-100">
           <NavbarNav />
           <Routes>
