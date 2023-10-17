@@ -6,7 +6,7 @@ import axios from "axios";
 import "../Bec/bec.scss";
 
 function ListUserAdm() {
-  const baseUrl = "http://localhost:80/api/";
+  const baseUrl = "http://localhost:80/api/per/";
   const [data, setData] = useState([]);
   const [modalInsertar, setModalInsertar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
@@ -137,8 +137,7 @@ function ListUserAdm() {
           <Button
             color="success"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}
-          >
+            onClick={() => abrirCerrarModalInsertar()}>
             <FaIcons.FaPlus /> Añadir
           </Button>
           {/* </Link> */}
@@ -169,15 +168,13 @@ function ListUserAdm() {
                 <td>
                   <button
                     className="btn btn-warning"
-                    onClick={() => seleccionarUsuario(Usuario, "Editar")}
-                  >
+                    onClick={() => seleccionarUsuario(Usuario, "Editar")}>
                     Editar
                   </button>{" "}
                   {"  "}
                   <button
                     className="btn btn-danger"
-                    onClick={() => seleccionarUsuario(Usuario, "Eliminar")}
-                  >
+                    onClick={() => seleccionarUsuario(Usuario, "Eliminar")}>
                     Eliminar
                   </button>
                 </td>
@@ -244,8 +241,7 @@ function ListUserAdm() {
             <Button
               color="danger"
               size="lg"
-              onClick={() => abrirCerrarModalInsertar()}
-            >
+              onClick={() => abrirCerrarModalInsertar()}>
               Cancelar
             </Button>
           </ModalFooter>
@@ -314,8 +310,7 @@ function ListUserAdm() {
             {"   "}
             <button
               className="btn btn-danger"
-              onClick={() => abrirCerrarModalEditar()}
-            >
+              onClick={() => abrirCerrarModalEditar()}>
               Cancelar
             </button>
           </ModalFooter>
@@ -332,8 +327,7 @@ function ListUserAdm() {
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => abrirCerrarModalEliminar()}
-            >
+              onClick={() => abrirCerrarModalEliminar()}>
               No
             </button>
           </ModalFooter>
