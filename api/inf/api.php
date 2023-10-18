@@ -16,7 +16,7 @@ public function getImagenes(){
          "nom_doc" => $fila['nom_doc'],
          "nom_usu" => $fila['nom_usu'],
          "f_cargado" => $fila['f_cargado'],
-         "archivo" =>  base64_encode($fila['archivo'])
+         "archivo_per" =>  base64_encode($fila['archivo_per'])
     );
          }//fin del ciclo while 
 
@@ -24,14 +24,15 @@ public function getImagenes(){
 }
 
 
-public function addImagen($descripcion, $imagen){
+public function addImagen($descripcion,$foto,$nom_doc){
   
   $conexion = new Conexion();
   $db = $conexion->getConexion();
-  $sql = "INSERT INTO informe (nom_usu, archivo) VALUES (:nom_usu,:archivo)";
+  $sql = "INSERT INTO informe (nom_usu, nom_doc, archivo_per) VALUES (:nom_usu,:nom_doc,:archivo_per)";
   $consulta = $db->prepare($sql);
   $consulta->bindParam(':nom_usu', $descripcion);
-  $consulta->bindParam(':archivo', $imagen);
+  $consulta->bindParam(':archivo_per', $foto);
+  $consulta->bindParam(':nom_doc', $nom_doc);
   $consulta->execute();
 
   return '{"msg":"imagen agregada"}';
@@ -43,7 +44,7 @@ public function deleteImagen($id_doc){
   $db = $conexion->getConexion();
   $sql = "DELETE FROM informe WHERE id_doc=:id_doc";
   $consulta = $db->prepare($sql);
-  $consulta->bindParam(':id_doc', $id); 
+  $consulta->bindParam(':id_doc', $id_doc); 
   $consulta->execute();
 
   return '{"msg":"imagen eliminada"}';
