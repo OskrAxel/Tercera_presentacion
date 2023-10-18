@@ -17,7 +17,7 @@ function Informe() {
   async function addImagen(e) {
     e.preventDefault();
     let fd = new FormData();
-    fd.append("archivo", imagen);
+    fd.append("archivo_per", imagen);
     fd.append("nom_usu", descripcion);
     const res = await axios.post("http://localhost:80/api/inf/", fd);
     console.log(res.data);
@@ -52,7 +52,7 @@ function Informe() {
               <input
                 type="file"
                 className="form-control-file"
-                accept="archivo/*"
+                accept="archivo_per/*"
                 onChange={(e) => setImagen(e.target.files[0])}
                 multiple
               />
@@ -71,9 +71,9 @@ function Informe() {
             <div className="card p-2 mt-2 border-secondary" key={item.id_doc}>
               <div className="card-body">
                 <img
-                  src={"data:archivo/png;base64," + item.archivo}
+                  src={"data:archivo_per/png;base64," + item.archivo_per}
                   className="img-fluid"
-                  alt="archivo"
+                  alt="archivo_per"
                 />
                 <h5 className="text-primary"> {item.nom_usu}</h5>
                 <div className="d-flex flex-row-reverse">

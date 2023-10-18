@@ -137,7 +137,8 @@ function ListUserPat() {
           <Button
             color="success"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}>
+            onClick={() => abrirCerrarModalInsertar()}
+          >
             <FaIcons.FaPlus /> Añadir
           </Button>
           {/* </Link> */}
@@ -168,13 +169,15 @@ function ListUserPat() {
                 <td>
                   <button
                     className="btn btn-warning"
-                    onClick={() => seleccionarUsuario(Usuario, "Editar")}>
+                    onClick={() => seleccionarUsuario(Usuario, "Editar")}
+                  >
                     Editar
                   </button>{" "}
                   {"  "}
                   <button
                     className="btn btn-danger"
-                    onClick={() => seleccionarUsuario(Usuario, "Eliminar")}>
+                    onClick={() => seleccionarUsuario(Usuario, "Eliminar")}
+                  >
                     Eliminar
                   </button>
                 </td>
@@ -241,7 +244,8 @@ function ListUserPat() {
             <Button
               color="danger"
               size="lg"
-              onClick={() => abrirCerrarModalInsertar()}>
+              onClick={() => abrirCerrarModalInsertar()}
+            >
               Cancelar
             </Button>
           </ModalFooter>
@@ -310,7 +314,8 @@ function ListUserPat() {
             {"   "}
             <button
               className="btn btn-danger"
-              onClick={() => abrirCerrarModalEditar()}>
+              onClick={() => abrirCerrarModalEditar()}
+            >
               Cancelar
             </button>
           </ModalFooter>
@@ -327,7 +332,8 @@ function ListUserPat() {
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => abrirCerrarModalEliminar()}>
+              onClick={() => abrirCerrarModalEliminar()}
+            >
               No
             </button>
           </ModalFooter>
