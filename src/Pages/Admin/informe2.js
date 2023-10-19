@@ -99,7 +99,7 @@ function Informe2() {
         <Table responsive="sm" id="tabl">
           <thead>
             <tr className="text-center">
-              <th>#</th>
+              {/* <th>#</th> */}
               <th>Nombre documento</th>
               <th>Usuario</th>
               <th>Fecha cargado</th>
@@ -110,7 +110,7 @@ function Informe2() {
           <tbody>
             {lista.map((item) => (
               <tr className="text-center" key={item.id_doc}>
-                <td>{item.id_doc}</td>
+                {/* <td>{item.id_doc}</td> */}
                 <td>{item.nom_doc}</td>
                 <td>{item.nom_usu}</td>
                 <td>{item.f_cargado}</td>
@@ -128,12 +128,12 @@ function Informe2() {
                   >
                     Descargar
                   </button>{" "}
-                  <button
+                  {/* <button
                     className="btn btn-warning"
                     onClick={() => seleccionarUsuario(item, "Editar")}
                   >
                     Editar
-                  </button>{" "}
+                  </button>{" "} */}
                   <button
                     className="btn btn-danger"
                     onClick={() => seleccionarUsuario(item, "Eliminar")}
@@ -212,7 +212,7 @@ function Informe2() {
           </ModalFooter>
         </Modal>
 
-        <Modal isOpen={modalEditar}>
+        {/* <Modal isOpen={modalEditar}>
           <ModalHeader>Editar Usuario</ModalHeader>
           <ModalBody>
             <div className="form-group">
@@ -236,6 +236,16 @@ function Informe2() {
                 value={usuarioSeleccionado && usuarioSeleccionado.nom_usu}
               />
               <br />
+              <label>Informe personal: </label>
+              <br />
+              <input
+                type="file"
+                className="form-control"
+                accept="archivo_pr/*"
+                onChange={(e) => setImagen(e.target.files[0])}
+                multiple
+              />
+              <br />
               <label>Fecha cargado: </label>
               <br />
               <input
@@ -250,7 +260,8 @@ function Informe2() {
           </ModalBody>
           <ModalFooter>
             <button
-              className="btn btn-primary" /* onClick={() => peticionPut()} */
+              className="btn btn-primary"
+              onClick={(e) => updateImagen(e)}
             >
               Editar
             </button>
@@ -262,7 +273,7 @@ function Informe2() {
               Cancelar
             </button>
           </ModalFooter>
-        </Modal>
+        </Modal> */}
 
         <Modal isOpen={modalEliminar}>
           <ModalBody>

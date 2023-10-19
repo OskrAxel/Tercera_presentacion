@@ -35,14 +35,14 @@ const SidebarAdm = () => {
       name: "Patrocinador",
       icon: <FaIcons.FaBuilding />,
     },
-    {
-      path: "informe",
-      name: "Informes",
-      icon: <FaIcons.FaEnvelopeOpenText />,
-    },
+    // {
+    //   path: "informe",
+    //   name: "Informes",
+    //   icon: <FaIcons.FaEnvelopeOpenText />,
+    // },
     {
       path: "informe2",
-      name: "Informes2",
+      name: "Informes",
       icon: <FaIcons.FaEnvelopeOpenText />,
     },
   ];

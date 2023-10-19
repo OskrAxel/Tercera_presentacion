@@ -7,6 +7,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -45,7 +46,12 @@ function NavbarNav(args) {
               </DropdownToggle>
               <DropdownMenu className="drop-menu">
                 <DropdownItem>Instrucciones</DropdownItem>
-                <DropdownItem>Postulación</DropdownItem>
+                <DropdownItem href="../../src/Pages/Admin/documentos/convocatoria/CONVOCATORIA.pdf">
+                  Postulación
+                </DropdownItem>
+                {/* <NavLink href="https://github.com/reactstrap/reactstrap">
+                  GitHub
+                </NavLink> */}
                 <DropdownItem>Sobre Nosotros...</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>Perfil</DropdownItem>
