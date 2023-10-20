@@ -45,6 +45,11 @@ const SidebarAdm = () => {
       name: "Informes",
       icon: <FaIcons.FaEnvelopeOpenText />,
     },
+    {
+      path: "pdf",
+      name: "Informes3",
+      icon: <FaIcons.FaEnvelopeOpenText />,
+    },
   ];
   return (
     <>

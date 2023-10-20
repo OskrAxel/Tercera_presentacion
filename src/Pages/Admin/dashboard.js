@@ -1,113 +1,199 @@
 import React from "react";
 import {
-  BsFillArchiveFill,
-  BsFillGrid3X3GapFill,
-  BsPeopleFill,
-  BsFillBellFill,
-} from "react-icons/bs";
+  Button,
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardSubtitle,
+  CardGroup,
+  Row,
+  Col,
+} from "reactstrap";
 import {
-  BarChart,
   Bar,
-  Cell,
-  XAxis,
-  YAxis,
+  BarChart,
   CartesianGrid,
-  Tooltip,
   Legend,
   ResponsiveContainer,
-  LineChart,
-  Line,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 
-function Dashboard() {
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
-
+import { PieChart, Pie, Cell } from "recharts";
+//
+const COLORS = [
+  "#ce93d8",
+  "#5c6bc0",
+  "#b39ddb",
+  "#4dd0e1",
+  "#f48fb1",
+  "#d500f9",
+];
+//
+const data = [
+  { name: "María", age: 10, weight: 60 },
+  { name: "Karina", age: 25, weight: 70 },
+  { name: "Susana", age: 15, weight: 65 },
+  { name: "Pedro", age: 35, weight: 85 },
+  { name: "Felipe", age: 12, weight: 48 },
+  { name: "Laura", age: 30, weight: 69 },
+  { name: "Adrián", age: 15, weight: 78 },
+];
+const Dashboard = () => {
   return (
-    <main className="main-container">
-      <div className="main-title">
-        <h3>DASHBOARD</h3>
-      </div>
-
-      <div className="main-cards">
-        <div className="card">
-          <div className="card-inner">
-            <h3>PRODUCTS</h3>
-            <BsFillArchiveFill className="card_icon" />
-          </div>
-          <h1>300</h1>
-        </div>
-        <div className="card">
-          <div className="card-inner">
-            <h3>CATEGORIES</h3>
-            <BsFillGrid3X3GapFill className="card_icon" />
-          </div>
-          <h1>12</h1>
-        </div>
-        <div className="card">
-          <div className="card-inner">
-            <h3>CUSTOMERS</h3>
-            <BsPeopleFill className="card_icon" />
-          </div>
-          <h1>33</h1>
-        </div>
-        <div className="card">
-          <div className="card-inner">
-            <h3>ALERTS</h3>
-            <BsFillBellFill className="card_icon" />
-          </div>
-          <h1>42</h1>
-        </div>
-      </div>
-
-      <div className="charts">
-        <ResponsiveContainer width="100%" height="100%">
+    <div id="main_content">
+      <div className="tra">
+        <CardGroup>
+          <Card
+            color=""
+            style={{
+              color: "white",
+              width: "18rem",
+            }}
+          >
+            <CardBody>
+              <CardTitle tag="h5">
+                Becarios
+                <br />
+                Habilitados
+              </CardTitle>
+              <CardSubtitle className="mb-2 text-muted" tag="h6">
+                Card subtitle
+              </CardSubtitle>
+              <CardText>Some quick</CardText>
+              <Button className="btn-success">Button</Button>
+            </CardBody>
+          </Card>
+          <Card
+            color=""
+            style={{
+              color: "white",
+              width: "18rem",
+            }}
+          >
+            <CardBody>
+              <CardTitle tag="h5">
+                Becarios
+                <br />
+                Habilitados
+              </CardTitle>
+              <CardSubtitle className="mb-2 text-muted" tag="h6">
+                Card subtitle
+              </CardSubtitle>
+              <CardText>Some quick</CardText>
+              <Button className="btn-success">Button</Button>
+            </CardBody>
+          </Card>
+          <Card
+            color=""
+            style={{
+              color: "white",
+              width: "18rem",
+            }}
+          >
+            <CardBody>
+              <CardTitle tag="h5">
+                Becarios
+                <br />
+                Habilitados
+              </CardTitle>
+              <CardSubtitle className="mb-2 text-muted" tag="h6">
+                Card subtitle
+              </CardSubtitle>
+              <CardText>Some quick</CardText>
+              <Button className="btn-success">Button</Button>
+            </CardBody>
+          </Card>
+          <Card
+            color=""
+            style={{
+              color: "white",
+              width: "18rem",
+            }}
+          >
+            <CardBody>
+              <CardTitle tag="h5">
+                Becarios
+                <br />
+                Habilitados
+              </CardTitle>
+              <CardSubtitle className="mb-2 text-muted" tag="h6">
+                Card subtitle
+              </CardSubtitle>
+              <CardText>Some quick</CardText>
+              <Button className="btn-success">Button</Button>
+            </CardBody>
+          </Card>
+        </CardGroup>
+        {/* // */}
+        <Row>
+          <Col sm="6">
+            <Card body>
+              <CardTitle tag="h5">Special Title Treatment</CardTitle>
+              <CardText>
+                With supporting text below as a natural lead-in to additional
+                content.
+              </CardText>
+              <ResponsiveContainer width="100%" aspect={2}>
+                <BarChart
+                  data={data}
+                  width={300}
+                  height={200}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="4 1 2" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="weight" fill="#6b48ff" />
+                  <Bar dataKey="age" fill="#1ee3cf" />
+                </BarChart>
+              </ResponsiveContainer>
+            </Card>
+          </Col>
+          <Col sm="6">
+            <Card body>
+              <CardTitle tag="h5">Special Title Treatment</CardTitle>
+              <CardText>
+                With supporting text below as a natural lead-in to additional
+                content.
+              </CardText>
+              <ResponsiveContainer width="100%" aspect={2}>
+                <PieChart>
+                  <Pie
+                    dataKey="weight"
+                    data={data}
+                    innerRadius={60}
+                    outerRadius={85}
+                    fill="#82ca9d"
+                  >
+                    {data.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={COLORS[index % COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            </Card>
+          </Col>
+        </Row>
+        {/* //graficos con rechart */}
+        {/* <ResponsiveContainer width="50%" aspect={2}>
           <BarChart
-            width={500}
-            height={300}
             data={data}
+            width={300}
+            height={200}
             margin={{
               top: 5,
               right: 30,
@@ -115,45 +201,39 @@ function Dashboard() {
               bottom: 5,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="4 1 2" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="pv" fill="#8884d8" />
-            <Bar dataKey="uv" fill="#82ca9d" />
+            <Bar dataKey="weight" fill="#6b48ff" />
+            <Bar dataKey="age" fill="#1ee3cf" />
           </BarChart>
-        </ResponsiveContainer>
-
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="pv"
-              stroke="#8884d8"
-              activeDot={{ r: 8 }}
-            />
-            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-          </LineChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer> */}
+        {/* <div style={{ width: "50%", height: 400 }}>
+          <ResponsiveContainer>
+            <PieChart>
+              <Pie
+                dataKey="weight"
+                data={data}
+                innerRadius={60}
+                outerRadius={85}
+                fill="#82ca9d"
+              >
+                {data.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </div> */}
       </div>
-    </main>
+    </div>
   );
-}
+};
 
 export default Dashboard;

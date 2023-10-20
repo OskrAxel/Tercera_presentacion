@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as FaIcons from "react-icons/fa"; // npm i react-icons
+// import * as FaIcons from "react-icons/fa"; // npm i react-icons
 import axios from "axios"; // npm i axios
 import "axios";
 function Informe() {

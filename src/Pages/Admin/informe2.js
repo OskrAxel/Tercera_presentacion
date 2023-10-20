@@ -78,6 +78,12 @@ function Informe2() {
   const abrirCerrarModalEliminar = () => {
     setModalEliminar(!modalEliminar);
   };
+  //modal ver
+
+  const [modalVer, setModalVer] = useState(false);
+  const abrirCerrarModalVer = () => {
+    setModalVer(!modalVer);
+  };
 
   return (
     <div id="main_content">
@@ -124,7 +130,7 @@ function Informe2() {
                 <td>
                   <button
                     className="btn btn-success"
-                    onClick={() => seleccionarUsuario(item, "Editar")}
+                    onClick={() => abrirCerrarModalVer()}
                   >
                     Descargar
                   </button>{" "}
@@ -290,6 +296,28 @@ function Informe2() {
             <button
               className="btn btn-secondary"
               onClick={() => abrirCerrarModalEliminar()}
+            >
+              No
+            </button>
+          </ModalFooter>
+        </Modal>
+
+        {/* //OTRO VER */}
+        <Modal isOpen={modalVer}>
+          <ModalBody>
+            ¿Estás seguro que deseas eliminar el documento{" "}
+            {usuarioSeleccionado && usuarioSeleccionado.nom_doc}?
+          </ModalBody>
+          <ModalFooter>
+            <button
+              className="btn btn-danger"
+              onClick={() => deleteImagen(usuarioSeleccionado.id_doc)}
+            >
+              Sí
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => abrirCerrarModalVer()}
             >
               No
             </button>

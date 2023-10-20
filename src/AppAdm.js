@@ -7,6 +7,7 @@ import ListUserAdm from "./Pages/Admin/Crud-Adm";
 import ListUserPat from "./Pages/Admin/Crud-Pat";
 import Informe from "./Pages/Admin/informe";
 import Informe2 from "./Pages/Admin/informe2";
+import CardPdf from "./Pages/Admin/inf3";
 
 function AppAdm() {
   return (
@@ -21,6 +22,7 @@ function AppAdm() {
             <Route path="patrocinador" element={<ListUserPat />} />
             <Route path="informe" element={<Informe />} />
             <Route path="informe2" element={<Informe2 />} />
+            <Route path="pdf" element={<CardPdf />} />
           </Routes>
         </div>
       </div>
