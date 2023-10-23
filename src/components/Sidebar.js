@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "./img/logo.png";
 
-const Sidebar = ({ children }) => {
+const Sidebar = ({ nombre }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
@@ -53,7 +53,7 @@ const Sidebar = ({ children }) => {
             />
           </h1>
           <h1 style={{ display: isOpen ? "flex" : "none" }} className="logo">
-            <p className="text-user">Alcides Oscar Cusi Ajno</p>
+            <p className="text-user">{nombre}</p>
           </h1>
         </div>
         {menuItem.map((item, index) => (

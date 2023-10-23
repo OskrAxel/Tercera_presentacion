@@ -84,13 +84,11 @@ const SidebarAdm = () => {
               className="link text-light py-3 w-100  px-2"
               activeClassName="active"
               to={item.path}
-              key={index}
-            >
+              key={index}>
               <div className="icon me-2">{item.icon}</div>
               <div
                 style={{ display: isOpen ? "block" : "none" }}
-                className="link_text"
-              >
+                className="link_text">
                 {item.name}
               </div>
             </NavLink>

@@ -2,7 +2,7 @@ import React from "react";
 import "./bec.scss";
 import { Card, Button, CardTitle, CardText, Col } from "reactstrap";
 
-function Registro() {
+function Registro({ nombre }) {
   return (
     <div className="d-flex p-5 justify-content-center">
       <Col id="colu">
@@ -12,10 +12,10 @@ function Registro() {
           style={{
             width: "50rem",
             background: "rgba(232, 232, 232, 0.65)",
-          }}
-        >
+          }}>
           <CardTitle tag="h4">Nota:</CardTitle>
           <CardText>
+            <h2>Bienvenido: {nombre}</h2>
             En caso de que haya sido aceptado para recibir y participar de la
             Beca en la institucion BQEF deberá ingresar el
             <b> CODIGO DE REGISTRO </b>
