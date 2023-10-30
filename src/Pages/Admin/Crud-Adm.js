@@ -147,7 +147,7 @@ function ListUserAdm() {
         <Table responsive="sm" id="tabl">
           <thead>
             <tr className="text-center">
-              <th>#</th>
+              {/* <th>#</th> */}
               <th>Nombres</th>
               <th>Apellidos</th>
               <th>Correo</th>
@@ -159,7 +159,7 @@ function ListUserAdm() {
           <tbody>
             {data.map((Usuario) => (
               <tr className="text-center" key={Usuario.id}>
-                <td>{Usuario.id}</td>
+                {/* <td>{Usuario.id}</td> */}
                 <td>{Usuario.nombre}</td>
                 <td>{Usuario.apellido}</td>
                 <td>{Usuario.email}</td>

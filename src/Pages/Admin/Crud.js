@@ -7,7 +7,7 @@ import axios from "axios";
 import "../Bec/bec.scss";
 
 function ListUser() {
-  const baseUrl = "http://localhost:80/api/";
+  const baseUrl = "http://localhost:80/api/bec/";
   const [data, setData] = useState([]);
   const [modalInsertar, setModalInsertar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
@@ -17,7 +17,7 @@ function ListUser() {
     nombre: "",
     apellido: "",
     email: "",
-    contraseña: "",
+    contrasena: "",
     celular: "",
   });
 
@@ -58,7 +58,7 @@ function ListUser() {
     f.append("nombre", usuarioSeleccionado.nombre);
     f.append("apellido", usuarioSeleccionado.apellido);
     f.append("email", usuarioSeleccionado.email);
-    f.append("contraseña", usuarioSeleccionado.contraseña);
+    f.append("contrasena", usuarioSeleccionado.contrasena);
     f.append("celular", usuarioSeleccionado.celular);
     f.append("METHOD", "POST");
     await axios
@@ -77,7 +77,7 @@ function ListUser() {
     f.append("nombre", usuarioSeleccionado.nombre);
     f.append("apellido", usuarioSeleccionado.apellido);
     f.append("email", usuarioSeleccionado.email);
-    f.append("contraseña", usuarioSeleccionado.contraseña);
+    f.append("contrasena", usuarioSeleccionado.contrasena);
     f.append("celular", usuarioSeleccionado.celular);
     f.append("METHOD", "PUT");
     await axios
@@ -89,7 +89,7 @@ function ListUser() {
             Usuario.nombre = usuarioSeleccionado.nombre;
             Usuario.apellido = usuarioSeleccionado.apellido;
             Usuario.email = usuarioSeleccionado.email;
-            Usuario.contraseña = usuarioSeleccionado.contraseña;
+            Usuario.contrasena = usuarioSeleccionado.contrasena;
             Usuario.celular = usuarioSeleccionado.celular;
           }
         });
@@ -138,8 +138,7 @@ function ListUser() {
           <Button
             color="success"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}
-          >
+            onClick={() => abrirCerrarModalInsertar()}>
             <FaIcons.FaPlus /> Añadir
           </Button>
           {/* </Link> */}
@@ -165,20 +164,18 @@ function ListUser() {
                 <td>{Usuario.nombre}</td>
                 <td>{Usuario.apellido}</td>
                 <td>{Usuario.email}</td>
-                <td>{Usuario.contraseña}</td>
+                <td>{Usuario.contrasena}</td>
                 <td>{Usuario.celular}</td>
                 <td>
                   <button
                     className="btn btn-warning"
-                    onClick={() => seleccionarUsuario(Usuario, "Editar")}
-                  >
+                    onClick={() => seleccionarUsuario(Usuario, "Editar")}>
                     Editar
                   </button>{" "}
                   {"  "}
                   <button
                     className="btn btn-danger"
-                    onClick={() => seleccionarUsuario(Usuario, "Eliminar")}
-                  >
+                    onClick={() => seleccionarUsuario(Usuario, "Eliminar")}>
                     Eliminar
                   </button>
                 </td>
@@ -223,7 +220,7 @@ function ListUser() {
               <input
                 type="text"
                 className="form-control"
-                name="contraseña"
+                name="contrasena"
                 onChange={handleChange}
               />
               <br />
@@ -245,8 +242,7 @@ function ListUser() {
             <Button
               color="danger"
               size="lg"
-              onClick={() => abrirCerrarModalInsertar()}
-            >
+              onClick={() => abrirCerrarModalInsertar()}>
               Cancelar
             </Button>
           </ModalFooter>
@@ -291,9 +287,9 @@ function ListUser() {
               <input
                 type="text"
                 className="form-control"
-                name="contraseña"
+                name="contrasena"
                 onChange={handleChange}
-                value={usuarioSeleccionado && usuarioSeleccionado.contraseña}
+                value={usuarioSeleccionado && usuarioSeleccionado.contrasena}
               />
               <br />
               <label>Celular: </label>
@@ -315,8 +311,7 @@ function ListUser() {
             {"   "}
             <button
               className="btn btn-danger"
-              onClick={() => abrirCerrarModalEditar()}
-            >
+              onClick={() => abrirCerrarModalEditar()}>
               Cancelar
             </button>
           </ModalFooter>
@@ -333,8 +328,7 @@ function ListUser() {
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => abrirCerrarModalEliminar()}
-            >
+              onClick={() => abrirCerrarModalEliminar()}>
               No
             </button>
           </ModalFooter>

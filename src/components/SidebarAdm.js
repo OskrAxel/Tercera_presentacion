@@ -1,7 +1,7 @@
 import * as FaIcons from "react-icons/fa";
 import "./Sidebar.scss";
 import React, { useState } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import { Button, Offcanvas, OffcanvasBody, OffcanvasHeader } from "reactstrap";
 import Logo from "./img/logo.png";
 
@@ -16,7 +16,7 @@ const SidebarAdm = () => {
   //
   const menuItem = [
     {
-      path: "/",
+      path: "dashboard",
       name: "Dashboard",
       icon: <FaIcons.FaFlipboard />,
     },
@@ -52,7 +52,7 @@ const SidebarAdm = () => {
     },
   ];
   return (
-    <>
+    <div>
       <div>
         <Button onClick={toggleOffCanvas} className="bars">
           <FaIcons.FaBars />
@@ -72,9 +72,9 @@ const SidebarAdm = () => {
                 }}
               />
             </h1>
-            <h1 className="logo">
+            {/* <h1 className="logo">
               <p className="text-user">Alcides Oscar Cusi Ajno</p>
-            </h1>
+            </h1> */}
           </div>
         </OffcanvasHeader>
         <OffcanvasBody>
@@ -95,8 +95,7 @@ const SidebarAdm = () => {
           ))}
         </OffcanvasBody>
       </Offcanvas>
-      <Outlet />
-    </>
+    </div>
   );
 };
 

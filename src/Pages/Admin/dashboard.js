@@ -1,4 +1,5 @@
 import React from "react";
+import "../Bec/bec.scss";
 import {
   Button,
   Card,
@@ -43,87 +44,67 @@ const data = [
 ];
 const Dashboard = () => {
   return (
-    <div id="main_content">
-      <div className="tra">
+    <div id="main">
+      <div className="tral">
         <CardGroup>
           <Card
             color=""
             style={{
-              color: "white",
+              color: "black",
               width: "18rem",
-            }}
-          >
+            }}>
             <CardBody>
-              <CardTitle tag="h5">
-                Becarios
-                <br />
-                Habilitados
-              </CardTitle>
+              <CardTitle tag="h5">Cuentas</CardTitle>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
-                Card subtitle
+                Becarios
               </CardSubtitle>
-              <CardText>Some quick</CardText>
-              <Button className="btn-success">Button</Button>
+              <CardText>Ver</CardText>
+              <Button className="btn-success">Ver</Button>
             </CardBody>
           </Card>
           <Card
             color=""
             style={{
-              color: "white",
+              color: "black",
               width: "18rem",
-            }}
-          >
+            }}>
             <CardBody>
-              <CardTitle tag="h5">
-                Becarios
-                <br />
-                Habilitados
-              </CardTitle>
+              <CardTitle tag="h5">Becarios</CardTitle>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
-                Card subtitle
+                Habilitados
               </CardSubtitle>
-              <CardText>Some quick</CardText>
-              <Button className="btn-success">Button</Button>
+              <CardText>Ver</CardText>
+              <Button className="btn-success">Ver</Button>
             </CardBody>
           </Card>
           <Card
             color=""
             style={{
-              color: "white",
+              color: "black",
               width: "18rem",
-            }}
-          >
+            }}>
             <CardBody>
-              <CardTitle tag="h5">
-                Becarios
-                <br />
-                Habilitados
-              </CardTitle>
+              <CardTitle tag="h5">Fecha Entrega</CardTitle>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
-                Card subtitle
+                Informes
               </CardSubtitle>
-              <CardText>Some quick</CardText>
-              <Button className="btn-success">Button</Button>
+              <CardText>Ver</CardText>
+              <Button className="btn-success">Ver</Button>
             </CardBody>
           </Card>
           <Card
             color=""
             style={{
-              color: "white",
+              color: "black",
               width: "18rem",
-            }}
-          >
+            }}>
             <CardBody>
-              <CardTitle tag="h5">
-                Becarios
-                <br />
-                Habilitados
-              </CardTitle>
+              <CardTitle tag="h5">Infromes</CardTitle>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
-                Card subtitle
+                Entregados
               </CardSubtitle>
-              <CardText>Some quick</CardText>
-              <Button className="btn-success">Button</Button>
+              <CardText>Ver</CardText>
+              <Button className="btn-success">Ver</Button>
             </CardBody>
           </Card>
         </CardGroup>
@@ -146,8 +127,7 @@ const Dashboard = () => {
                     right: 30,
                     left: 20,
                     bottom: 5,
-                  }}
-                >
+                  }}>
                   <CartesianGrid strokeDasharray="4 1 2" />
                   <XAxis dataKey="name" />
                   <YAxis />
@@ -173,8 +153,7 @@ const Dashboard = () => {
                     data={data}
                     innerRadius={60}
                     outerRadius={85}
-                    fill="#82ca9d"
-                  >
+                    fill="#82ca9d">
                     {data.map((entry, index) => (
                       <Cell
                         key={`cell-${index}`}

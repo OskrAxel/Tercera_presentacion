@@ -42,3 +42,18 @@
 #tabl {
   --bs-table-bg: rgba(232, 232, 232, 0.65);
 }
+//dashboard
+#main {
+  padding: 40px;
+}
+.tral {
+  font-size: 1rem;
+  border-radius: 3px;
+  background-color: rgba(232, 232, 232, 0.1);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.91);
+}
+.card {
+  background-color: rgba(232, 232, 232, 0.65);
+  margin: 10px;
+  border-radius: 5px;
+}
