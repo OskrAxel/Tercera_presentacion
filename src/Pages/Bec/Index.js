@@ -25,7 +25,9 @@ function Registro({ nombre }) {
             <p></p>
             <b>Por favor haga clic en el botón a continuación</b>
           </CardText>
-          <Button id="but">Continuar</Button>
+          <Button id="but" href="/RegComp">
+            Continuar registro
+          </Button>
         </Card>
       </Col>
     </div>

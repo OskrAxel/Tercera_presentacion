@@ -18,6 +18,7 @@ import Clients from "./Pages/Clients";
 import NavbarBec from "./components/NavbarBec";
 import NavbarAdm from "./components/NavbarAdm";
 import NavbarLogin from "./components/NavbarLogin";
+import RegComp from "./Pages/Bec/RegComp";
 
 function AppAdm() {
   return (
@@ -59,8 +60,12 @@ function AppAdm() {
           <Route path="/" element={<NavbarBec />}>
             {/* //Becario */}
             <Route
-              path="/registro"
+              path="/inicio"
               element={<Protected Component={Registro} />}
+            />
+            <Route
+              path="/regcomp"
+              element={<Protected Component={RegComp} />}
             />
             <Route
               path="/horarios"

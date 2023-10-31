@@ -1,7 +1,7 @@
 import * as FaIcons from "react-icons/fa";
 import "./Sidebar.scss";
 import React, { useState } from "react";
-import { Outlet, NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Button, Offcanvas, OffcanvasBody, OffcanvasHeader } from "reactstrap";
 import Logo from "./img/logo.png";
 
@@ -16,9 +16,14 @@ const SidebarBec = () => {
   //
   const menuItem = [
     {
-      path: "Registro",
-      name: "Registro",
+      path: "inicio",
+      name: "Inicio",
       icon: <FaIcons.FaFlipboard />,
+    },
+    {
+      path: "regcomp",
+      name: "Reg. Completo",
+      icon: <FaIcons.FaRegAddressBook />,
     },
     {
       path: "horarios",
