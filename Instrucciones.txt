@@ -10,4 +10,4 @@ Ubicarse en la carpeta clonada y ejecutar en la terminal el comando: npm start
 =============================================================
 Usuarios para pruebas:
 perfil administrador de sistema: admin  /  admin123$
-perfil becario: Oscar  /  123
+perfil becario: ewe  /  123
