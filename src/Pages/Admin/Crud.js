@@ -209,7 +209,7 @@ function ListUser() {
               <label>Correo: </label>
               <br />
               <input
-                type="text"
+                type="email"
                 className="form-control"
                 name="email"
                 onChange={handleChange}
@@ -275,7 +275,7 @@ function ListUser() {
               <label>Correo: </label>
               <br />
               <input
-                type="text"
+                type="email"
                 className="form-control"
                 name="email"
                 onChange={handleChange}

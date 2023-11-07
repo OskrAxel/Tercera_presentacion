@@ -27,8 +27,8 @@ function AppAdm() {
         <Routes>
           <Route path="/" element={<NavbarLogin />}>
             <Route exact path="/" element={<LoginBec />} />
-            <Route exact path="/LoginAdm" element={<LoginAdm />} />
-            <Route exact path="/LoginPer" element={<LoginPer />} />
+            <Route path="/LoginAdm" element={<LoginAdm />} />
+            <Route path="/LoginPer" element={<LoginPer />} />
           </Route>
           <Route path="/" element={<NavbarAdm />}>
             <Route

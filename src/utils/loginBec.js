@@ -14,7 +14,7 @@ function LoginBec() {
   useEffect(() => {
     let login = localStorage.getItem("login");
     if (login) {
-      navigate("/registro");
+      navigate("/inicio");
     }
     let loginStatus = localStorage.getItem("loginStatus");
     if (loginStatus) {
@@ -78,7 +78,7 @@ function LoginBec() {
             setTimeout(function () {
               localStorage.setItem("login", true);
               localStorage.setItem("user", user);
-              navigate("/registro");
+              navigate("/inicio");
             }, 5000);
           }
         })
