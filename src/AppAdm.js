@@ -17,8 +17,15 @@ import Sales from "./Pages/Sales";
 import Clients from "./Pages/Clients";
 import NavbarBec from "./components/NavbarBec";
 import NavbarAdm from "./components/NavbarAdm";
+import NavbarPer from "./components/NavbarPer";
 import NavbarLogin from "./components/NavbarLogin";
 import RegComp from "./Pages/Bec/RegComp";
+import ListBe from "./Pages/Per/Bec";
+import RegBec from "./Pages/Per/Index";
+import ListPat from "./Pages/Per/Pat";
+import Evalua from "./Pages/Per/Evalua";
+import CargaDoc from "./Pages/Per/CargaDoc";
+import Analisis from "./Pages/Per/Analisis";
 
 function AppAdm() {
   return (
@@ -30,7 +37,9 @@ function AppAdm() {
             <Route path="/LoginAdm" element={<LoginAdm />} />
             <Route path="/LoginPer" element={<LoginPer />} />
           </Route>
+          {/* //// */}
           <Route path="/" element={<NavbarAdm />}>
+            {/* //Administrador */}
             <Route
               path="/dashboard"
               element={<Protected Component={Dashboard} />}
@@ -57,6 +66,7 @@ function AppAdm() {
             />
             <Route path="/pdf" element={<Protected Component={CardPdf} />} />
           </Route>
+          {/* //// */}
           <Route path="/" element={<NavbarBec />}>
             {/* //Becario */}
             <Route
@@ -75,6 +85,25 @@ function AppAdm() {
             <Route
               path="/clients"
               element={<Protected Component={Clients} />}
+            />
+          </Route>
+          {/* //// */}
+          <Route path="/" element={<NavbarPer />}>
+            {/* //Personal */}
+            <Route path="/ini" element={<Protected Component={RegBec} />} />
+            <Route
+              path="/becarios"
+              element={<Protected Component={ListBe} />}
+            />
+            <Route path="/patro" element={<Protected Component={ListPat} />} />
+            <Route path="/evaluar" element={<Protected Component={Evalua} />} />
+            <Route
+              path="/cargar"
+              element={<Protected Component={CargaDoc} />}
+            />
+            <Route
+              path="/analisis"
+              element={<Protected Component={Analisis} />}
             />
           </Route>
         </Routes>

@@ -14,7 +14,7 @@ function LoginPer() {
   useEffect(() => {
     let login = localStorage.getItem("login");
     if (login) {
-      navigate("/dashboard");
+      navigate("/ini");
     }
     let loginStatus = localStorage.getItem("loginStatus");
     if (loginStatus) {
@@ -51,7 +51,7 @@ function LoginPer() {
 
   function loginSubmit() {
     if (user !== "" && pass != "") {
-      var url = "http://localhost:80/api/loginAdm.php";
+      var url = "http://localhost:80/api/loginPer.php";
       var headers = {
         Accept: "application/json",
         "Content-type": "application/json",
@@ -78,7 +78,7 @@ function LoginPer() {
             setTimeout(function () {
               localStorage.setItem("login", true);
               localStorage.setItem("user", user);
-              navigate("/dashboard");
+              navigate("/ini");
             }, 5000);
           }
         })
@@ -95,7 +95,7 @@ function LoginPer() {
       <div id="form">
         <div className="text-center">
           <h1 className="im">
-            <FaIcons.FaUserCircle />
+            <FaIcons.FaUsers />
           </h1>
           <h2>INICIAR SESIÓN PERSONAL</h2>
           <br />

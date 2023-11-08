@@ -95,7 +95,7 @@ function LoginAdm() {
       <div id="form">
         <div className="text-center">
           <h1 className="im">
-            <FaIcons.FaUserCircle />
+            <FaIcons.FaUserSecret />
           </h1>
           <h2>INICIAR SESIÓN ADMIN</h2>
           <br />

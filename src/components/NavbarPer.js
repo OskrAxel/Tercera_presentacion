@@ -7,7 +7,6 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
   NavLink,
   NavbarText,
   UncontrolledDropdown,
@@ -16,14 +15,13 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { Outlet, useNavigate } from "react-router-dom";
-import SidebarAdm from "./SidebarAdm";
-
-function NavbarAdm(args) {
+import SidebarPer from "./SidebarPer";
+function NavbarBec(args) {
   const naviget = useNavigate();
   function logoutSubmit() {
     localStorage.setItem("login", "");
     localStorage.setItem("loginStatus", "Cierre de sesión satisfactoria!");
-    naviget("/LoginAdm");
+    naviget("/LoginPer");
   }
   const user = localStorage.getItem("user");
 
@@ -33,7 +31,7 @@ function NavbarAdm(args) {
   return (
     <div>
       <Navbar expand="md" {...args}>
-        <SidebarAdm />
+        <SidebarPer />
         <NavbarBrand href="/" className="text-light">
           <img
             src={Logo}
@@ -56,7 +54,13 @@ function NavbarAdm(args) {
               </DropdownToggle>
               <DropdownMenu className="drop-menu">
                 <DropdownItem>Instrucciones</DropdownItem>
-                <DropdownItem>Postulacion</DropdownItem>
+                <DropdownItem>
+                  <NavLink
+                    className="text-light"
+                    href="src\Pages\Admin\documentos\convocatoria\CONVOCATORIA.pdf">
+                    Postulacion
+                  </NavLink>
+                </DropdownItem>
                 <DropdownItem>Sobre Nosotros...</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>Perfil</DropdownItem>
@@ -74,4 +78,4 @@ function NavbarAdm(args) {
   );
 }
 
-export default NavbarAdm;
+export default NavbarBec;
