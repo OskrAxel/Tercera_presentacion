@@ -26,6 +26,7 @@ import ListPat from "./Pages/Per/Pat";
 import Evalua from "./Pages/Per/Evalua";
 import CargaDoc from "./Pages/Per/CargaDoc";
 import Analisis from "./Pages/Per/Analisis";
+import RegBeca from "./Pages/Per/RegBeca";
 
 function AppAdm() {
   return (
@@ -91,6 +92,10 @@ function AppAdm() {
           <Route path="/" element={<NavbarPer />}>
             {/* //Personal */}
             <Route path="/ini" element={<Protected Component={RegBec} />} />
+            <Route
+              path="/regbeca"
+              element={<Protected Component={RegBeca} />}
+            />
             <Route
               path="/becarios"
               element={<Protected Component={ListBe} />}

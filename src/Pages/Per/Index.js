@@ -12,7 +12,8 @@ function RegPer({ nombre }) {
           style={{
             width: "50rem",
             background: "rgba(232, 232, 232, 0.65)",
-          }}>
+          }}
+        >
           <CardTitle tag="h4">Nota:</CardTitle>
           <CardText>
             <h2>Bienvenido: {nombre}</h2>
@@ -22,7 +23,7 @@ function RegPer({ nombre }) {
             <p></p>
             <b>Por favor haga clic en el botón a continuación</b>
           </CardText>
-          <Button id="but" href="/RegComp">
+          <Button id="but" href="/regbeca">
             Continuar registro
           </Button>
         </Card>
