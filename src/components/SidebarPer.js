@@ -21,7 +21,7 @@ const SidebarPer = () => {
       icon: <FaIcons.FaRegAddressBook />,
     },
     {
-      path: "regbeca",
+      path: "regper",
       name: "Perfil Usuario",
       icon: <FaIcons.FaRegAddressCard />,
     },

@@ -2,7 +2,7 @@ import React from "react";
 import "../Bec/bec.scss";
 import { Card, Button, CardTitle, CardText, Col } from "reactstrap";
 
-function RegPer({ nombre }) {
+function Ini({ nombre }) {
   return (
     <div className="d-flex p-5 justify-content-center">
       <Col id="colu">
@@ -23,7 +23,7 @@ function RegPer({ nombre }) {
             <p></p>
             <b>Por favor haga clic en el botón a continuación</b>
           </CardText>
-          <Button id="but" href="/regbeca">
+          <Button id="but" href="./regper">
             Continuar registro
           </Button>
         </Card>
@@ -38,4 +38,4 @@ function RegPer({ nombre }) {
   );
 }
 
-export default RegPer;
+export default Ini;

@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-// import "./App.scss";
 import ListUser from "./Pages/Admin/Crud";
 import Dashboard from "./Pages/Admin/dashboard";
 import ListUserAdm from "./Pages/Admin/Crud-Adm";
@@ -21,12 +20,14 @@ import NavbarPer from "./components/NavbarPer";
 import NavbarLogin from "./components/NavbarLogin";
 import RegComp from "./Pages/Bec/RegComp";
 import ListBe from "./Pages/Per/Bec";
-import RegBec from "./Pages/Per/Index";
 import ListPat from "./Pages/Per/Pat";
 import Evalua from "./Pages/Per/Evalua";
 import CargaDoc from "./Pages/Per/CargaDoc";
 import Analisis from "./Pages/Per/Analisis";
-import RegBeca from "./Pages/Per/RegBeca";
+import Pdf2 from "./Pages/Per/pdfconv";
+import Pdfman from "./Pages/Per/pdfman";
+import Ini from "./Pages/Per/Index";
+import RegPer from "./Pages/Per/RegPer";
 
 function AppAdm() {
   return (
@@ -91,11 +92,8 @@ function AppAdm() {
           {/* //// */}
           <Route path="/" element={<NavbarPer />}>
             {/* //Personal */}
-            <Route path="/ini" element={<Protected Component={RegBec} />} />
-            <Route
-              path="/regbeca"
-              element={<Protected Component={RegBeca} />}
-            />
+            <Route path="/ini" element={<Protected Component={Ini} />} />
+            <Route path="/regper" element={<Protected Component={RegPer} />} />
             <Route
               path="/becarios"
               element={<Protected Component={ListBe} />}
@@ -110,6 +108,8 @@ function AppAdm() {
               path="/analisis"
               element={<Protected Component={Analisis} />}
             />
+            <Route path="/pdf2" element={<Protected Component={Pdf2} />} />
+            <Route path="/pdfman" element={<Protected Component={Pdfman} />} />
           </Route>
         </Routes>
       </div>

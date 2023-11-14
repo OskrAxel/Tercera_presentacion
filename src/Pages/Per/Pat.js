@@ -137,7 +137,8 @@ function ListPat() {
           <Button
             color="success"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}>
+            onClick={() => abrirCerrarModalInsertar()}
+          >
             <FaIcons.FaPlus /> Añadir
           </Button>
           {/* </Link> */}
@@ -153,7 +154,6 @@ function ListPat() {
               <th>Correo</th>
               <th>Clave</th>
               <th>Celular</th>
-              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -165,173 +165,10 @@ function ListPat() {
                 <td>{Usuario.email}</td>
                 <td>{Usuario.contraseña}</td>
                 <td>{Usuario.celular}</td>
-                <td>
-                  <button
-                    className="btn btn-warning"
-                    onClick={() => seleccionarUsuario(Usuario, "Editar")}>
-                    Editar
-                  </button>{" "}
-                  {"  "}
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => seleccionarUsuario(Usuario, "Eliminar")}>
-                    Eliminar
-                  </button>
-                </td>
               </tr>
             ))}
           </tbody>
         </Table>
-
-        <Modal isOpen={modalInsertar}>
-          <ModalHeader>Insertar Usuario</ModalHeader>
-          <ModalBody>
-            <div className="form-group">
-              <label>Nombres: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="nombre"
-                onChange={handleChange}
-              />
-              <br />
-              <label>Apellidos: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="apellido"
-                onChange={handleChange}
-              />
-              <br />
-              <label>Correo: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="email"
-                onChange={handleChange}
-              />
-              <br />
-              <label>Clave: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="contraseña"
-                onChange={handleChange}
-              />
-              <br />
-              <label>Celular: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="celular"
-                onChange={handleChange}
-              />
-              <br />
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="success" size="lg" onClick={() => peticionPost()}>
-              Guardar
-            </Button>
-            <Button
-              color="danger"
-              size="lg"
-              onClick={() => abrirCerrarModalInsertar()}>
-              Cancelar
-            </Button>
-          </ModalFooter>
-        </Modal>
-
-        <Modal isOpen={modalEditar}>
-          <ModalHeader>Editar Usuario</ModalHeader>
-          <ModalBody>
-            <div className="form-group">
-              <label>Nombres: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="nombre"
-                onChange={handleChange}
-                value={usuarioSeleccionado && usuarioSeleccionado.nombre}
-              />
-              <br />
-              <label>Apellidos: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="apellido"
-                onChange={handleChange}
-                value={usuarioSeleccionado && usuarioSeleccionado.apellido}
-              />
-              <br />
-              <label>Correo: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="email"
-                onChange={handleChange}
-                value={usuarioSeleccionado && usuarioSeleccionado.email}
-              />
-              <br />
-              <label>Clave: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="contraseña"
-                onChange={handleChange}
-                value={usuarioSeleccionado && usuarioSeleccionado.contraseña}
-              />
-              <br />
-              <label>Celular: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="celular"
-                onChange={handleChange}
-                value={usuarioSeleccionado && usuarioSeleccionado.celular}
-              />
-              <br />
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <button className="btn btn-primary" onClick={() => peticionPut()}>
-              Editar
-            </button>
-            {"   "}
-            <button
-              className="btn btn-danger"
-              onClick={() => abrirCerrarModalEditar()}>
-              Cancelar
-            </button>
-          </ModalFooter>
-        </Modal>
-
-        <Modal isOpen={modalEliminar}>
-          <ModalBody>
-            ¿Estás seguro que deseas eliminar el Usuario{" "}
-            {usuarioSeleccionado && usuarioSeleccionado.nombre}?
-          </ModalBody>
-          <ModalFooter>
-            <button className="btn btn-danger" onClick={() => peticionDelete()}>
-              Sí
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => abrirCerrarModalEliminar()}>
-              No
-            </button>
-          </ModalFooter>
-        </Modal>
       </div>
     </div>
   );

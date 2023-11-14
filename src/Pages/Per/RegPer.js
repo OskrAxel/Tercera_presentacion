@@ -3,7 +3,7 @@ import { FormGroup, Input, Row, Form, Col, Label, Button } from "reactstrap";
 import "../Bec/bec.scss";
 import axios from "axios";
 
-const RegBeca = (props) => {
+const RegPer = (props) => {
   const baseUrl = "http://localhost:80/api/bec/";
   const [data, setData] = useState([]);
   const [usuarioSeleccionado, setusuarioSeleccionado] = useState({
@@ -41,6 +41,7 @@ const RegBeca = (props) => {
       <div className="tra">
         <div className="tra title-form">
           <h2 className>Datos Personales</h2>
+          {data.user}
         </div>
         <Form className="frm">
           <Row>
@@ -108,19 +109,19 @@ const RegBeca = (props) => {
             </Col>
           </Row>
           <Button className="btn btn-success">Guardar</Button>
-          {data.map((Usuario) => (
-            <tr className="text-center" key={Usuario.id}>
-              <td>{Usuario.id}</td>
-              <td>{Usuario.nombre}</td>
-              <td>{Usuario.apellido}</td>
-              <td>{Usuario.email}</td>
-              <td>{Usuario.carrera}</td>
-              <td>{Usuario.anio}</td>
-              <td>{Usuario.celular}</td>
-              <td>{Usuario.ciudad}</td>
-              <td>{Usuario.direc}</td>
-              <td>{Usuario.nompad}</td>
-              <td>{Usuario.nommad}</td>
+          {data.map((user) => (
+            <tr className="text-center" key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.nombre}</td>
+              <td>{user.apellido}</td>
+              <td>{user.email}</td>
+              <td>{user.carrera}</td>
+              <td>{user.anio}</td>
+              <td>{user.celular}</td>
+              <td>{user.ciudad}</td>
+              <td>{user.direc}</td>
+              <td>{user.nompad}</td>
+              <td>{user.nommad}</td>
             </tr>
           ))}
         </Form>
@@ -129,4 +130,4 @@ const RegBeca = (props) => {
   );
 };
 
-export default RegBeca;
+export default RegPer;

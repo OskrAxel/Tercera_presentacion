@@ -7,7 +7,6 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavLink,
   NavbarText,
   UncontrolledDropdown,
   DropdownToggle,
@@ -32,7 +31,7 @@ function NavbarBec(args) {
     <div>
       <Navbar expand="md" {...args}>
         <SidebarPer />
-        <NavbarBrand href="/" className="text-light">
+        <NavbarBrand href="./ini" className="text-light">
           <img
             src={Logo}
             alt="logo"
@@ -53,18 +52,14 @@ function NavbarBec(args) {
                 MENU
               </DropdownToggle>
               <DropdownMenu className="drop-menu">
-                <DropdownItem>Instrucciones</DropdownItem>
-                <DropdownItem>
-                  <NavLink
-                    className="text-light"
-                    href="src\Pages\Admin\documentos\convocatoria\CONVOCATORIA.pdf">
-                    Postulacion
-                  </NavLink>
+                <DropdownItem href="./pdfman" target="_blank">
+                  Instrucciones
+                </DropdownItem>
+                <DropdownItem href="./pdf2" target="_blank">
+                  Postulacion
                 </DropdownItem>
                 <DropdownItem>Sobre Nosotros...</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>Perfil</DropdownItem>
-                <DropdownItem>Foto</DropdownItem>
                 <DropdownItem>Cambiar Contraseña</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem onClick={logoutSubmit}>Salir</DropdownItem>
