@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2023 a las 03:20:56
+-- Tiempo de generación: 20-11-2023 a las 04:10:06
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.0.25
 
@@ -57,10 +57,11 @@ INSERT INTO `informe` (`id_doc`, `nom_doc`, `nom_usu`, `archivo_per`, `tipo_per`
 CREATE TABLE `patrocinador` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
-  `apellido` varchar(60) DEFAULT NULL,
+  `pais` varchar(60) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
-  `contraseña` varchar(40) DEFAULT NULL,
-  `celular` bigint(20) DEFAULT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `celular` int(10) DEFAULT NULL,
+  `institucion` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -69,9 +70,9 @@ CREATE TABLE `patrocinador` (
 -- Volcado de datos para la tabla `patrocinador`
 --
 
-INSERT INTO `patrocinador` (`id`, `nombre`, `apellido`, `email`, `contraseña`, `celular`, `created_at`, `updated_at`) VALUES
-(1, 'a11', 'a1', 'a1', '698d51a19d8a121ce581499d7b701668', 222, '2023-10-17 00:45:57', '2023-10-17 00:45:57'),
-(2, 'a113', 'a1', 'a1', '3049a1f0f1c808cdaa4fbed0e01649b1', 222, '2023-10-17 00:47:49', '2023-10-17 00:47:49');
+INSERT INTO `patrocinador` (`id`, `nombre`, `pais`, `email`, `direccion`, `celular`, `institucion`, `created_at`, `updated_at`) VALUES
+(1, 'Amigos Obrajes', 'Bolivia', 'amigos@amigos.com', 'zona bellavista zona sur', 222, 'Iglesia evangelica', '2023-11-19 03:57:25', '2023-11-19 03:57:25'),
+(2, 'a113', 'a1', 'a1', '3049a1f0f1c808cdaa4fbed0e01649b1', 222, NULL, '2023-10-17 00:47:49', '2023-10-17 00:47:49');
 
 -- --------------------------------------------------------
 
@@ -112,23 +113,29 @@ CREATE TABLE `usuarios_bec` (
   `contrasena` varchar(40) DEFAULT NULL,
   `celular` bigint(20) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `carrera` varchar(100) DEFAULT NULL,
+  `anio` int(4) DEFAULT NULL,
+  `ciudad` varchar(30) DEFAULT NULL,
+  `direccion` varchar(200) DEFAULT NULL,
+  `nom_pad` varchar(30) DEFAULT NULL,
+  `nom_mad` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios_bec`
 --
 
-INSERT INTO `usuarios_bec` (`id`, `nombre`, `apellido`, `email`, `contrasena`, `celular`, `created_at`, `updated_at`) VALUES
-(1, '123123', 'qwe123', 'asda@weqwe', '202cb962ac59075b964b07152d234b70', 12312312, '2023-10-16 01:59:23', '2023-10-16 01:59:23'),
-(4, 'hoola', 'jola', 'asd@saldalsd', '202cb962ac59075b964b07152d234b70', 123123, '2023-10-16 01:59:26', '2023-10-16 01:59:26'),
-(5, 'ewe', 'wee', '123 qw@', '202cb962ac59075b964b07152d234b70', 12312312, '2023-10-16 01:59:30', '2023-10-16 01:59:30'),
-(14, '123123', '12313221', 'qweqewqe', '202cb962ac59075b964b07152d234b70', 77777, '2023-10-16 01:59:34', '2023-10-16 01:59:34'),
-(15, '123123', '12313221', 'qweqewqe', '202cb962ac59075b964b07152d234b70', 77777, '2023-10-16 01:59:38', '2023-10-16 01:59:38'),
-(23, 'a1', 'a1', 'a1', '202cb962ac59075b964b07152d234b70', 1111111111, '2023-10-16 01:59:42', '2023-10-16 01:59:42'),
-(25, '132', '123', '123', '202cb962ac59075b964b07152d234b70', 123, '2023-10-16 01:59:48', '2023-10-16 01:59:48'),
-(28, 'qweqw', 'qweqwe', 'weqewq', '202cb962ac59075b964b07152d234b70', 111111, '2023-10-16 01:52:40', '2023-10-16 01:52:40'),
-(29, 'qweqwe', 'qweqweq', 'weqweqew', '202cb962ac59075b964b07152d234b70', 1111, '2023-10-16 04:00:00', '2023-10-16 01:49:16');
+INSERT INTO `usuarios_bec` (`id`, `nombre`, `apellido`, `email`, `contrasena`, `celular`, `created_at`, `updated_at`, `carrera`, `anio`, `ciudad`, `direccion`, `nom_pad`, `nom_mad`) VALUES
+(1, '123123', 'qwe123', 'asda@weqwe', '202cb962ac59075b964b07152d234b70', 12312312, '2023-10-16 01:59:23', '2023-10-16 01:59:23', NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'hoola', 'jola', 'asd@saldalsd', '202cb962ac59075b964b07152d234b70', 123123, '2023-10-16 01:59:26', '2023-10-16 01:59:26', NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'ewe', 'wee', '123 qw@', '202cb962ac59075b964b07152d234b70', 12312312, '2023-10-16 01:59:30', '2023-10-16 01:59:30', NULL, NULL, NULL, NULL, NULL, NULL),
+(14, '123123', '12313221', 'qweqewqe', '202cb962ac59075b964b07152d234b70', 77777, '2023-10-16 01:59:34', '2023-10-16 01:59:34', NULL, NULL, NULL, NULL, NULL, NULL),
+(15, '123123', '12313221', 'qweqewqe', '202cb962ac59075b964b07152d234b70', 77777, '2023-10-16 01:59:38', '2023-10-16 01:59:38', NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 'a1', 'a1', 'a1', '202cb962ac59075b964b07152d234b70', 1111111111, '2023-11-19 03:42:07', '2023-11-19 03:42:07', 'sistemas', 2012, 'la paz', 'alto obrajes', 'feliciano', 'brigida'),
+(25, '132', '123', '123', '202cb962ac59075b964b07152d234b70', 123, '2023-10-16 01:59:48', '2023-10-16 01:59:48', NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 'qweqw', 'qweqwe', 'weqewq', '202cb962ac59075b964b07152d234b70', 111111, '2023-10-16 01:52:40', '2023-10-16 01:52:40', NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 'qweqwe', 'qweqweq', 'weqweqew', '202cb962ac59075b964b07152d234b70', 1111, '2023-10-16 04:00:00', '2023-10-16 01:49:16', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -141,19 +148,24 @@ CREATE TABLE `usuarios_per` (
   `nombre` varchar(50) DEFAULT NULL,
   `apellido` varchar(60) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
-  `contraseña` varchar(40) DEFAULT NULL,
+  `contrasena` varchar(40) DEFAULT NULL,
   `celular` bigint(20) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `id_per` varchar(20) DEFAULT NULL,
+  `carrera` varchar(50) DEFAULT NULL,
+  `institucion` varchar(40) DEFAULT NULL,
+  `anio_inicio` int(4) DEFAULT NULL,
+  `turno` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios_per`
 --
 
-INSERT INTO `usuarios_per` (`id`, `nombre`, `apellido`, `email`, `contraseña`, `celular`, `created_at`, `updated_at`) VALUES
-(1, 'asdasd', 'asdasdasd', 'asdasdasd', 'asdasd123123', 112312312, '2023-10-17 00:34:54', '2023-10-17 00:34:54'),
-(2, 'asdasd1111', 'asdasdasd', 'asdasdasd', '1a1233cfb69d7f27211e36aff9ec373a', 112312312, '2023-10-17 00:48:10', '2023-10-17 00:48:10');
+INSERT INTO `usuarios_per` (`id`, `nombre`, `apellido`, `email`, `contrasena`, `celular`, `created_at`, `updated_at`, `id_per`, `carrera`, `institucion`, `anio_inicio`, `turno`) VALUES
+(1, 'personal', 'asdasdasd', 'asdasdasd', 'b6c2d84a465c3c8a1b3782b3ae052add', 112312312, '2023-11-08 12:54:43', '2023-11-08 12:54:43', '', NULL, NULL, NULL, NULL),
+(2, 'asdasd1111', 'asdasdasd', 'asdasdasd', '1a1233cfb69d7f27211e36aff9ec373a', 112312312, '2023-10-17 00:48:10', '2023-10-17 00:48:10', '', NULL, NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas

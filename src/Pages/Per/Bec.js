@@ -19,6 +19,10 @@ function ListBe() {
     email: "",
     contrasena: "",
     celular: "",
+    carrera: "",
+    anio: "",
+    nom_pad: "",
+    nom_mad: "",
   });
 
   const handleChange = (e) => {
@@ -60,6 +64,10 @@ function ListBe() {
     f.append("email", usuarioSeleccionado.email);
     f.append("contrasena", usuarioSeleccionado.contrasena);
     f.append("celular", usuarioSeleccionado.celular);
+    f.append("carrera", usuarioSeleccionado.carrera);
+    f.append("anio", usuarioSeleccionado.anio);
+    f.append("nom_pad", usuarioSeleccionado.nom_pad);
+    f.append("nom_mad", usuarioSeleccionado.nom_mad);
     f.append("METHOD", "POST");
     await axios
       .post(baseUrl, f)
@@ -79,6 +87,10 @@ function ListBe() {
     f.append("email", usuarioSeleccionado.email);
     f.append("contrasena", usuarioSeleccionado.contrasena);
     f.append("celular", usuarioSeleccionado.celular);
+    f.append("carrera", usuarioSeleccionado.carrera);
+    f.append("anio", usuarioSeleccionado.anio);
+    f.append("nom_pad", usuarioSeleccionado.nom_pad);
+    f.append("nom_mad", usuarioSeleccionado.nom_mad);
     f.append("METHOD", "PUT");
     await axios
       .post(baseUrl, f, { params: { id: usuarioSeleccionado.id } })
@@ -91,6 +103,10 @@ function ListBe() {
             Usuario.email = usuarioSeleccionado.email;
             Usuario.contrasena = usuarioSeleccionado.contrasena;
             Usuario.celular = usuarioSeleccionado.celular;
+            Usuario.carrera = usuarioSeleccionado.carrera;
+            Usuario.anio = usuarioSeleccionado.anio;
+            Usuario.nom_pad = usuarioSeleccionado.nom_pad;
+            Usuario.nom_mad = usuarioSeleccionado.nom_mad;
           }
         });
         setData(dataNueva);
@@ -117,12 +133,6 @@ function ListBe() {
       });
   };
 
-  const seleccionarUsuario = (Usuario, caso) => {
-    setusuarioSeleccionado(Usuario);
-
-    caso === "Editar" ? abrirCerrarModalEditar() : abrirCerrarModalEliminar();
-  };
-
   useEffect(() => {
     peticionGet();
   }, []);
@@ -136,11 +146,10 @@ function ListBe() {
         <div id="subt">
           {/* <Link to="user/create"> */}
           <Button
-            color="success"
+            color="primary"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}
-          >
-            <FaIcons.FaPlus /> Añadir
+            onClick={() => abrirCerrarModalInsertar()}>
+            <FaIcons.FaFileDownload /> Reporte
           </Button>
           {/* </Link> */}
         </div>
@@ -148,7 +157,7 @@ function ListBe() {
         <br />
         <Table responsive="sm" id="tabl">
           <thead>
-            <tr className="text-center">
+            <tr className="text-center tra title-form">
               <th>#</th>
               <th>Nombres</th>
               <th>Apellidos</th>
@@ -173,9 +182,9 @@ function ListBe() {
                 <td>{Usuario.anio}</td>
                 <td>{Usuario.celular}</td>
                 <td>{Usuario.ciudad}</td>
-                <td>{Usuario.direc}</td>
-                <td>{Usuario.nompad}</td>
-                <td>{Usuario.nommad}</td>
+                <td>{Usuario.direccion}</td>
+                <td>{Usuario.nom_pad}</td>
+                <td>{Usuario.nom_mad}</td>
               </tr>
             ))}
           </tbody>
@@ -239,8 +248,7 @@ function ListBe() {
             <Button
               color="danger"
               size="lg"
-              onClick={() => abrirCerrarModalInsertar()}
-            >
+              onClick={() => abrirCerrarModalInsertar()}>
               Cancelar
             </Button>
           </ModalFooter>
@@ -309,8 +317,7 @@ function ListBe() {
             {"   "}
             <button
               className="btn btn-danger"
-              onClick={() => abrirCerrarModalEditar()}
-            >
+              onClick={() => abrirCerrarModalEditar()}>
               Cancelar
             </button>
           </ModalFooter>
@@ -327,8 +334,7 @@ function ListBe() {
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => abrirCerrarModalEliminar()}
-            >
+              onClick={() => abrirCerrarModalEliminar()}>
               No
             </button>
           </ModalFooter>
