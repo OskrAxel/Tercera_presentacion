@@ -12,7 +12,6 @@ import LoginPer from "./utils/loginPer";
 import LoginAdm from "./utils/loginAdm";
 import Registro from "./Pages/Bec/Index";
 import Horarios from "./Pages/Bec/Horarios";
-import Sales from "./Pages/Sales";
 import Clients from "./Pages/Clients";
 import NavbarBec from "./components/NavbarBec";
 import NavbarAdm from "./components/NavbarAdm";
@@ -28,6 +27,9 @@ import Pdf2 from "./Pages/Per/pdfconv";
 import Pdfman from "./Pages/Per/pdfman";
 import Ini from "./Pages/Per/Index";
 import RegPer from "./Pages/Per/RegPer";
+import Notas from "./Pages/Bec/notas";
+import PdfConv2 from "./Pages/Bec/PdfConv2";
+import Pdfman1 from "./Pages/Bec/Pdfman1";
 
 function AppAdm() {
   return (
@@ -83,10 +85,18 @@ function AppAdm() {
               path="/horarios"
               element={<Protected Component={Horarios} />}
             />
-            <Route path="/sales" element={<Protected Component={Sales} />} />
+            <Route path="/notas" element={<Protected Component={Notas} />} />
             <Route
               path="/clients"
               element={<Protected Component={Clients} />}
+            />
+            <Route
+              path="/PdfConv2"
+              element={<Protected Component={PdfConv2} />}
+            />
+            <Route
+              path="/Pdfman1"
+              element={<Protected Component={Pdfman1} />}
             />
           </Route>
           {/* //// */}

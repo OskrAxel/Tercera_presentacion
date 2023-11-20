@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Table, Button } from "reactstrap";
 import * as FaIcons from "react-icons/fa";
 
@@ -19,7 +19,8 @@ const Evalua = () => {
           <Button
             color="primary"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}>
+            onClick={() => abrirCerrarModalInsertar()}
+          >
             <FaIcons.FaFileDownload /> Reporte
           </Button>
           {/* </Link> */}

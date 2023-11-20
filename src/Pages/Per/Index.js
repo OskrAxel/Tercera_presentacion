@@ -1,7 +1,7 @@
 import React from "react";
 import "../Bec/bec.scss";
 import { Card, Button, CardTitle, CardText, Col } from "reactstrap";
-
+const user = localStorage.getItem("user");
 function Ini({ nombre }) {
   return (
     <div className="d-flex p-5 justify-content-center">
@@ -16,7 +16,7 @@ function Ini({ nombre }) {
         >
           <CardTitle tag="h4">Nota:</CardTitle>
           <CardText>
-            <h2>Bienvenido: {nombre}</h2>
+            <h2>Bienvenido: {user}</h2>
             En caso de que no haya registrado sus datos personales continuar con
             el registro
             <br />
