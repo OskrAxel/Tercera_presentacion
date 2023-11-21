@@ -19,8 +19,7 @@ const Evalua = () => {
           <Button
             color="primary"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}
-          >
+            onClick={() => abrirCerrarModalInsertar()}>
             <FaIcons.FaFileDownload /> Reporte
           </Button>
           {/* </Link> */}

@@ -9,7 +9,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   NavbarText,
   UncontrolledDropdown,
   DropdownToggle,
@@ -62,8 +61,7 @@ function NavbarBec(args) {
             <NavItem>
               <Button
                 color="warning"
-                onClick={() => abrirCerrarModalInsertar()}
-              >
+                onClick={() => abrirCerrarModalInsertar()}>
                 ENVIAR INF
               </Button>
             </NavItem>
@@ -115,8 +113,7 @@ function NavbarBec(args) {
           <Button
             color="danger"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}
-          >
+            onClick={() => abrirCerrarModalInsertar()}>
             Cancelar
           </Button>
         </ModalFooter>
