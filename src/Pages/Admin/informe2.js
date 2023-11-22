@@ -95,7 +95,8 @@ function Informe2() {
           <Button
             color="success"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}>
+            onClick={() => abrirCerrarModalInsertar()}
+          >
             <FaIcons.FaPlus /> Añadir
           </Button>
         </div>
@@ -129,7 +130,8 @@ function Informe2() {
                 <td>
                   <button
                     className="btn btn-success"
-                    onClick={() => abrirCerrarModalVer()}>
+                    onClick={() => abrirCerrarModalVer()}
+                  >
                     Descargar
                   </button>{" "}
                   {/* <button
@@ -140,7 +142,8 @@ function Informe2() {
                   </button>{" "} */}
                   <button
                     className="btn btn-danger"
-                    onClick={() => seleccionarUsuario(item, "Eliminar")}>
+                    onClick={() => seleccionarUsuario(item, "Eliminar")}
+                  >
                     Eliminar
                   </button>
                 </td>
@@ -181,15 +184,6 @@ function Informe2() {
                 multiple
               />
               <br />
-              {/* <label>informes Económico: </label>
-              <br />
-              <input
-                type="file"
-                className="form-control"
-                name="file_e"
-                onChange={handleChange}
-              />
-              <br /> */}
               <label>Fecha cargado: </label>
               <br />
               <input
@@ -208,74 +202,12 @@ function Informe2() {
             <Button
               color="danger"
               size="lg"
-              onClick={() => abrirCerrarModalInsertar()}>
+              onClick={() => abrirCerrarModalInsertar()}
+            >
               Cancelar
             </Button>
           </ModalFooter>
         </Modal>
-
-        {/* <Modal isOpen={modalEditar}>
-          <ModalHeader>Editar Usuario</ModalHeader>
-          <ModalBody>
-            <div className="form-group">
-              <label>Nombre documento:</label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="nom_doc"
-                onChange={handleChange}
-                value={usuarioSeleccionado && usuarioSeleccionado.nom_doc}
-              />
-              <br />
-              <label>Usuario: </label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                name="nom_usu"
-                onChange={handleChange}
-                value={usuarioSeleccionado && usuarioSeleccionado.nom_usu}
-              />
-              <br />
-              <label>Informe personal: </label>
-              <br />
-              <input
-                type="file"
-                className="form-control"
-                accept="archivo_pr/*"
-                onChange={(e) => setImagen(e.target.files[0])}
-                multiple
-              />
-              <br />
-              <label>Fecha cargado: </label>
-              <br />
-              <input
-                type="datetime-local"
-                className="form-control"
-                name="f_cargado"
-                onChange={handleChange}
-                value={usuarioSeleccionado && usuarioSeleccionado.f_cargado}
-              />
-              <br />
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <button
-              className="btn btn-primary"
-              onClick={(e) => updateImagen(e)}
-            >
-              Editar
-            </button>
-            {"   "}
-            <button
-              className="btn btn-danger"
-              onClick={() => abrirCerrarModalEditar()}
-            >
-              Cancelar
-            </button>
-          </ModalFooter>
-        </Modal> */}
 
         <Modal isOpen={modalEliminar}>
           <ModalBody>
@@ -285,12 +217,14 @@ function Informe2() {
           <ModalFooter>
             <button
               className="btn btn-danger"
-              onClick={() => deleteImagen(usuarioSeleccionado.id_doc)}>
+              onClick={() => deleteImagen(usuarioSeleccionado.id_doc)}
+            >
               Sí
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => abrirCerrarModalEliminar()}>
+              onClick={() => abrirCerrarModalEliminar()}
+            >
               No
             </button>
           </ModalFooter>
@@ -305,12 +239,14 @@ function Informe2() {
           <ModalFooter>
             <button
               className="btn btn-danger"
-              onClick={() => deleteImagen(usuarioSeleccionado.id_doc)}>
+              onClick={() => deleteImagen(usuarioSeleccionado.id_doc)}
+            >
               Sí
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => abrirCerrarModalVer()}>
+              onClick={() => abrirCerrarModalVer()}
+            >
               No
             </button>
           </ModalFooter>

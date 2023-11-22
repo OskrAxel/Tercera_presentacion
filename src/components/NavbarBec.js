@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./navbar.scss";
 import Logo from "./img/logo.png";
+import axios from "axios";
 import * as FaIcons from "react-icons/fa";
 import {
   Collapse,
@@ -35,6 +36,20 @@ function NavbarBec(args) {
 
   const toggle = () => setIsOpen(!isOpen);
   ////
+  const [descripcion, setDescripcion] = useState("");
+  const [nom, setNom] = useState("");
+  const [imagen, setImagen] = useState(null);
+
+  async function addImagen(e) {
+    e.preventDefault();
+    let fd = new FormData();
+    fd.append("archivo_per", imagen);
+    fd.append("nom_usu", descripcion);
+    fd.append("nom_doc", nom);
+    const res = await axios.post("http://localhost:80/api/inf/", fd);
+    console.log(res.data);
+    abrirCerrarModalInsertar();
+  }
   const [modalInsertar, setModalInsertar] = useState(false);
   const abrirCerrarModalInsertar = () => {
     setModalInsertar(!modalInsertar);
@@ -61,7 +76,8 @@ function NavbarBec(args) {
             <NavItem>
               <Button
                 color="warning"
-                onClick={() => abrirCerrarModalInsertar()}>
+                onClick={() => abrirCerrarModalInsertar()}
+              >
                 ENVIAR INF
               </Button>
             </NavItem>
@@ -92,28 +108,48 @@ function NavbarBec(args) {
         </Collapse>
       </Navbar>
       <Modal isOpen={modalInsertar}>
-        <ModalHeader>Enviar Informes</ModalHeader>
+        <ModalHeader>Cargar documento</ModalHeader>
         <ModalBody>
           <div className="form-group">
-            <label>Nombre Becario</label>
+            <label>Nombre documento: </label>
             <br />
-            <input type="text" className="form-control" name="nombre" />
+            <input
+              type="text"
+              className="form-control"
+              name="nom_doc"
+              onChange={(e) => setNom(e.target.value)}
+            />
             <br />
-            <label>Archivos: </label>
+            <label>Usuario: </label>
             <br />
-            <input type="file" className="form-control" name="archivos" />
+            <input
+              type="text"
+              className="form-control"
+              name="nom_usu"
+              onChange={(e) => setDescripcion(e.target.value)}
+            />
+            <br />
+            <label>Informe personal: </label>
+            <br />
+            <input
+              type="file"
+              className="form-control"
+              accept="archivo_per/*"
+              onChange={(e) => setImagen(e.target.files[0])}
+              multiple
+            />
             <br />
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="success" size="lg">
-            <FaIcons.FaUpload />
-            &nbsp; Cargar
+          <Button color="success" size="lg" onClick={(e) => addImagen(e)}>
+            Guardar
           </Button>
           <Button
             color="danger"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}>
+            onClick={() => abrirCerrarModalInsertar()}
+          >
             Cancelar
           </Button>
         </ModalFooter>

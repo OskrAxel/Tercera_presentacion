@@ -4,12 +4,31 @@ import "../Bec/bec.scss";
 import axios from "axios";
 
 function Regper() {
-  const [data, setData] = useState("");
+  const [data, setData] = useState({
+    id: "",
+    nombre: "",
+    apellido: "",
+    email: "",
+    id_per: "",
+    carrera: "",
+    celular: "",
+    institucion: "",
+    anio_inicio: "",
+  });
   const user = localStorage.getItem("user");
   let id = 1; //////aqui se configura el usuiario
-
-  const peticionGet = () => {
-    axios
+  ///
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(data);
+  };
+  ///
+  const peticionGet = async () => {
+    await axios
       .get(`http://localhost:80/api/per/per.php?id=${id}`)
       .then((response) => {
         console.log(response.data);
@@ -19,18 +38,26 @@ function Regper() {
         console.log(error);
       });
   };
+  const peticionPut = async () => {
+    var f = new FormData();
+    f.append("nombre", data.nombre);
+    f.append("apellido", data.apellido);
+    f.append("METHOD", "PUT");
+    await axios
+      .post(`http://localhost:80/api/per/per.php`, f, {
+        params: { id: data.id },
+      })
+      .then((response) => {
+        setData(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   useEffect(() => {
     peticionGet();
   }, []);
   return (
-    // <>
-    //   <td>{data.id}</td>
-    //   <td>{data.nombre}</td>
-    //   <td>{data.apellido}</td>
-    //   <td>{data.email}</td>
-    //   <td>{data.contrasena}</td>
-    //   <td>{data.celular}</td>
-    // </>
     <div id="main_content">
       <div className="tra">
         <div className="tra title-form">
@@ -41,79 +68,106 @@ function Regper() {
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label for="nom">Nombre:</Label>
+                <Label>Nombre:</Label>
                 <Input
-                  id="nom"
-                  name="nom"
+                  name="nombre"
                   type="text"
-                  // onChange={handleChange}
+                  onChange={handleChange}
                   value={data.nombre}
                 />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label for="ape">Apellido:</Label>
-                <Input id="ape" name="ape" type="text" value={data.apellido} />
+                <Label>Apellido:</Label>
+                <Input
+                  name="apellido"
+                  type="text"
+                  onChange={handleChange}
+                  value={data.apellido}
+                />
               </FormGroup>
             </Col>
           </Row>
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label for="id_usu">ID Usuario:</Label>
+                <Label for="id_per">ID Usuario:</Label>
                 <Input
-                  id="id_usu"
-                  name="id_usu"
+                  id="id_per"
+                  name="id_per"
                   type="text"
+                  onChange={handleChange}
                   value={data.id_per}
                 />
               </FormGroup>
             </Col>
             <Col md={4}>
               <FormGroup>
-                <Label for="carr">Carrera:</Label>
-                <Input id="carr" name="carr" type="text" value={data.carrera} />
+                <Label for="carrera">Carrera:</Label>
+                <Input
+                  id="carrera"
+                  name="carrera"
+                  type="text"
+                  onChange={handleChange}
+                  value={data.carrera}
+                />
               </FormGroup>
             </Col>
             <Col md={2}>
               <FormGroup>
-                <Label for="id_usu">Celular:</Label>
-                <Input id="cel" name="cel" type="text" value={data.celular} />
+                <Label for="celular">Celular:</Label>
+                <Input
+                  id="celular"
+                  name="celular"
+                  type="text"
+                  onChange={handleChange}
+                  value={data.celular}
+                />
               </FormGroup>
             </Col>
           </Row>
           <Row>
             <Col md={6}>
               <FormGroup>
-                <Label for="Uni_ins">Universidad/Institución:</Label>
+                <Label for="institucion">Universidad/Institución:</Label>
                 <Input
-                  id="Uni_ins"
-                  name="Uni_ins"
+                  id="institucion"
+                  name="institucion"
                   type="text"
+                  onChange={handleChange}
                   value={data.institucion}
                 />
               </FormGroup>
             </Col>
             <Col md={4}>
               <FormGroup>
-                <Label for="year">Año Inicio:</Label>
+                <Label for="anio_inicio">Año Inicio:</Label>
                 <Input
-                  id="year"
-                  name="year"
+                  id="anio_inicio"
+                  name="anio_inicio"
                   type="text"
+                  onChange={handleChange}
                   value={data.anio_inicio}
                 />
               </FormGroup>
             </Col>
             <Col md={2}>
               <FormGroup>
-                <Label for="ema">Correo:</Label>
-                <Input id="ema" name="ema" type="text" value={data.email} />
+                <Label for="email">Correo:</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="text"
+                  onChange={handleChange}
+                  value={data.email}
+                />
               </FormGroup>
             </Col>
           </Row>
-          <Button className="btn btn-success">Guardar</Button>
+          <Button className="btn btn-success" onClick={() => peticionPut()}>
+            Modificar
+          </Button>
         </Form>
       </div>
     </div>
