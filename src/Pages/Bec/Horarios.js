@@ -49,105 +49,165 @@ const Horarios = (props) => {
                 <FormGroup>
                   {/* <Label for="exampleSelect">Select</Label> */}
                   <Input id="exampleSelect" name="gestion" type="select">
-                    <option>I</option>
-                    <option>II</option>
+                    <option>I-Semestre</option>
+                    <option>II-Semestre</option>
                   </Input>
                 </FormGroup>
               </th>
-              <th>
-                <Input size={1} />
+              <th colSpan={3}>
+                <Input placeholder="Año" />
               </th>
             </tr>
             <tr className="text-center">
               <th>Materias</th>
               <th></th>
               <th>Días</th>
-              <th>Horas</th>
+              <th colSpan={3}>Horas</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <Input size={1} />
+                <Input placeholder="Materia: 1" />
               </td>
               <td></td>
               <td>
-                <Input size={1} />
+                <Input
+                  size={1}
+                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                />
               </td>
               <td>
-                <Input size={1} />
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
               </td>
             </tr>
             <tr>
               <td>
-                <Input size={1} />
+                <Input placeholder="Materia: 2" />
               </td>
               <td></td>
               <td>
-                <Input size={1} />
+                <Input
+                  size={1}
+                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                />
               </td>
               <td>
-                <Input size={1} />
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
               </td>
             </tr>
             <tr>
               <td>
-                <Input size={1} />
+                <Input placeholder="Materia: 3" />
               </td>
               <td></td>
               <td>
-                <Input size={1} />
+                <Input
+                  size={1}
+                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                />
               </td>
               <td>
-                <Input size={1} />
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
               </td>
             </tr>
             <tr>
               <td>
-                <Input size={1} />
+                <Input placeholder="Materia: 4" />
               </td>
               <td></td>
               <td>
-                <Input size={1} />
+                <Input
+                  size={1}
+                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                />
               </td>
               <td>
-                <Input size={1} />
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
               </td>
             </tr>
             <tr>
               <td>
-                <Input size={1} />
+                <Input placeholder="Materia: 5" />
               </td>
               <td></td>
               <td>
-                <Input size={1} />
+                <Input
+                  size={1}
+                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                />
               </td>
               <td>
-                <Input size={1} />
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
               </td>
             </tr>
             <tr>
               <td>
-                <Input size={1} />
+                <Input placeholder="Materia: 6" />
               </td>
               <td></td>
               <td>
-                <Input size={1} />
+                <Input
+                  size={1}
+                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                />
               </td>
               <td>
-                <Input size={1} />
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
               </td>
             </tr>
             <tr>
               <td>
-                <Input size={1} />
+                <Input placeholder="Materia: 7" />
               </td>
               <td></td>
               <td>
-                <Input size={1} />
+                <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
               </td>
               <td>
-                <Input size={1} />
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
+              </td>
+              <td>
+                <Input type="time" />
               </td>
             </tr>
           </tbody>

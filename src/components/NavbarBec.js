@@ -78,7 +78,7 @@ function NavbarBec(args) {
                 color="warning"
                 onClick={() => abrirCerrarModalInsertar()}
               >
-                ENVIAR INF
+                <FaIcons.FaPlus /> ENVIAR INF
               </Button>
             </NavItem>
             <>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>
