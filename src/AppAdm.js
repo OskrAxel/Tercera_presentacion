@@ -11,7 +11,16 @@ import LoginBec from "./utils/loginBec";
 import LoginPer from "./utils/loginPer";
 import LoginAdm from "./utils/loginAdm";
 import Registro from "./Pages/Bec/Index";
-import Horarios from "./Pages/Bec/Horarios";
+import Horarios1 from "./Pages/Bec/Horarios/Horarios1";
+import Horarios2 from "./Pages/Bec/Horarios/Horarios2";
+import Horarios3 from "./Pages/Bec/Horarios/Horarios3";
+import Horarios4 from "./Pages/Bec/Horarios/Horarios4";
+import Horarios5 from "./Pages/Bec/Horarios/Horarios5";
+import Horarios6 from "./Pages/Bec/Horarios/Horarios6";
+import Horarios7 from "./Pages/Bec/Horarios/Horarios7";
+import Horarios8 from "./Pages/Bec/Horarios/Horarios8";
+import Horarios9 from "./Pages/Bec/Horarios/Horarios9";
+import Horarios10 from "./Pages/Bec/Horarios/Horarios10";
 import Clients from "./Pages/Clients";
 import NavbarBec from "./components/NavbarBec";
 import NavbarAdm from "./components/NavbarAdm";
@@ -82,8 +91,44 @@ function AppAdm() {
               element={<Protected Component={RegComp} />}
             />
             <Route
-              path="/horarios"
-              element={<Protected Component={Horarios} />}
+              path="/horarios1"
+              element={<Protected Component={Horarios1} />}
+            />
+            <Route
+              path="/horarios2"
+              element={<Protected Component={Horarios2} />}
+            />
+            <Route
+              path="/horarios3"
+              element={<Protected Component={Horarios3} />}
+            />
+            <Route
+              path="/horarios4"
+              element={<Protected Component={Horarios4} />}
+            />
+            <Route
+              path="/horarios5"
+              element={<Protected Component={Horarios5} />}
+            />
+            <Route
+              path="/horarios6"
+              element={<Protected Component={Horarios6} />}
+            />
+            <Route
+              path="/horarios7"
+              element={<Protected Component={Horarios7} />}
+            />
+            <Route
+              path="/horarios8"
+              element={<Protected Component={Horarios8} />}
+            />
+            <Route
+              path="/horarios9"
+              element={<Protected Component={Horarios9} />}
+            />
+            <Route
+              path="/horarios10"
+              element={<Protected Component={Horarios10} />}
             />
             <Route path="/notas" element={<Protected Component={Notas} />} />
             <Route

@@ -7,14 +7,14 @@ import {
   PaginationItem,
   PaginationLink,
 } from "reactstrap";
-import "./bec.scss";
+import "../bec.scss";
 
-const Horarios = (props) => {
+const Horarios2 = (props) => {
   return (
     <div id="main_content">
       <div className="tra">
         <div className="tra title-form">
-          <h2 className>Horario</h2>
+          <h2 className>Horario 2</h2>
         </div>
         <div id="subt">
           <span>
@@ -211,43 +211,57 @@ const Horarios = (props) => {
               </td>
             </tr>
           </tbody>
-          <tfoot>
-            <div>
-              <Pagination aria-label="Page navigation example">
-                <PaginationItem disabled>
-                  <PaginationLink first href="#" />
-                </PaginationItem>
-                <PaginationItem disabled>
-                  <PaginationLink href="#" previous />
-                </PaginationItem>
-                <PaginationItem active>
-                  <PaginationLink href="#">1</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">2</PaginationLink>
-                </PaginationItem>
-                <PaginationItem disabled>
-                  <PaginationLink href="#">3</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">4</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">5</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#" next />
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#" last />
-                </PaginationItem>
-              </Pagination>
-            </div>
-          </tfoot>
         </Table>
+        <Pagination
+          aria-label="Page navigation example"
+          className="pagination justify-content-center"
+        >
+          <PaginationItem>
+            <PaginationLink first href="/horarios1" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios1" previous />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios1">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem active>
+            <PaginationLink href="/horarios2">2</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios3">3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios4">4</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios5">5</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios6">6</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios7">7</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios8">8</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios9">9</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios10">10</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios3" next />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="/horarios10" last />
+          </PaginationItem>
+        </Pagination>
       </div>
     </div>
   );
 };
 
-export default Horarios;
+export default Horarios2;
