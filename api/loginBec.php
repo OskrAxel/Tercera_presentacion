@@ -13,13 +13,13 @@ if(mysqli_connect_error()){
         $eData = file_get_contents("php://input");
         $dData = json_decode($eData, true);
  
-        $user = $dData['user'];
+        $iduser = $dData['iduser'];
         $pass = $dData['pass'];
         $password = md5($pass);
         $result = "";
  
-        if($user != "" and $pass != ""){
-            $sql = "SELECT * FROM usuarios_bec WHERE nombre='$user';";
+        if($iduser != "" and $pass != ""){
+            $sql = "SELECT * FROM usuarios_bec WHERE id_bec='$iduser';";
             $res = mysqli_query($conn, $sql);
  
             if(mysqli_num_rows($res) != 0){

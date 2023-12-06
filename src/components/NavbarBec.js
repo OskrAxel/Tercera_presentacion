@@ -30,7 +30,7 @@ function NavbarBec(args) {
     localStorage.setItem("loginStatus", "Cierre de sesión satisfactoria!");
     naviget("/");
   }
-  const user = localStorage.getItem("user");
+  const iduser = localStorage.getItem("iduser");
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -76,14 +76,13 @@ function NavbarBec(args) {
             <NavItem>
               <Button
                 color="warning"
-                onClick={() => abrirCerrarModalInsertar()}
-              >
+                onClick={() => abrirCerrarModalInsertar()}>
                 <FaIcons.FaPlus /> ENVIAR INF
               </Button>
             </NavItem>
             <>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>
             {/* //REVISAR */}
-            <NavbarText className="text-light">{user}</NavbarText>
+            <NavbarText className="text-light">{iduser}</NavbarText>
             <UncontrolledDropdown nav direction="down">
               <DropdownToggle nav caret className="text-light">
                 MENU
@@ -148,8 +147,7 @@ function NavbarBec(args) {
           <Button
             color="danger"
             size="lg"
-            onClick={() => abrirCerrarModalInsertar()}
-          >
+            onClick={() => abrirCerrarModalInsertar()}>
             Cancelar
           </Button>
         </ModalFooter>

@@ -6,7 +6,7 @@ import { Button, Input } from "reactstrap";
 
 function LoginBec() {
   const naviget = useNavigate();
-  const [user, setUser] = useState("");
+  const [iduser, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
@@ -22,16 +22,16 @@ function LoginBec() {
       setTimeout(function () {
         localStorage.clear();
         window.location.reload();
-      }, 3000);
+      }, 300);
     }
     setTimeout(function () {
       setMsg("");
-    }, 5000);
+    }, 700);
   }, [msg]);
 
   const handleInputChange = (e, type) => {
     switch (type) {
-      case "user":
+      case "iduser":
         setError("");
         setUser(e.target.value);
         if (e.target.value === "") {
@@ -50,14 +50,14 @@ function LoginBec() {
   };
 
   function loginSubmit() {
-    if (user !== "" && pass != "") {
+    if (iduser !== "" && pass != "") {
       var url = "http://localhost:80/api/loginBec.php";
       var headers = {
         Accept: "application/json",
         "Content-type": "application/json",
       };
       var Data = {
-        user: user,
+        iduser: iduser,
         pass: pass,
       };
       fetch(url, {
@@ -77,7 +77,7 @@ function LoginBec() {
             setMsg(response[0].result);
             setTimeout(function () {
               localStorage.setItem("login", true);
-              localStorage.setItem("user", user);
+              localStorage.setItem("iduser", iduser);
               naviget("/inicio");
             }, 5000);
           }
@@ -113,8 +113,8 @@ function LoginBec() {
           className="form-control"
           type="text"
           placeholder="Usuario"
-          value={user}
-          onChange={(e) => handleInputChange(e, "user")}
+          value={iduser}
+          onChange={(e) => handleInputChange(e, "iduser")}
         />
         <br />
         <Input
