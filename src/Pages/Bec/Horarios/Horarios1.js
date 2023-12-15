@@ -1,15 +1,91 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Table,
   FormGroup,
   Input,
+  Button,
   Pagination,
   PaginationItem,
   PaginationLink,
+  Form,
+  Row,
+  Col,
+  Label,
 } from "reactstrap";
 import "../bec.scss";
+import axios from "axios";
 
-const Horarios1 = (props) => {
+function Horarios1() {
+  const [data, setData] = useState({
+    id: "",
+    mat_1: "",
+    apellido: "",
+    email: "",
+    id_bec: "",
+    carrera: "",
+    celular: "",
+    institucion: "",
+    anio: "",
+    ciudad: "",
+    direccion: "",
+    nom_pad: "",
+    nom_mad: "",
+  });
+  // const iduser = localStorage.getItem("iduser");
+  // let id = "ocusi"; //////aqui se configura el usuiario
+  ///
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(data);
+  };
+  ///
+  const peticionGet = async () => {
+    await axios
+      .get(`http://localhost:80/api/bec/horario.php`, {
+        params: {
+          id: localStorage.getItem("iduser"),
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const peticionPut = async () => {
+    var f = new FormData();
+    f.append("nombre", data.nombre);
+    f.append("apellido", data.apellido);
+    f.append("email", data.email);
+    f.append("id_bec", data.id_bec);
+    f.append("carrera", data.carrera);
+    f.append("celular", data.celular);
+    f.append("institucion", data.institucion);
+    f.append("anio", data.anio);
+    f.append("ciudad", data.ciudad);
+    f.append("direccion", data.direccion);
+    f.append("nom_pad", data.nom_pad);
+    f.append("nom_mad", data.nom_mad);
+    f.append("METHOD", "PUT");
+    await axios
+      .post(`http://localhost:80/api/bec/bec.php`, f, {
+        params: { id: data.id },
+      })
+      .then((response) => {
+        setData(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    peticionGet();
+  }, []);
   return (
     <div id="main_content">
       <div className="tra">
@@ -24,198 +100,196 @@ const Horarios1 = (props) => {
           </span>
         </div>
 
-        <Table responsive="sm" id="tabl">
-          <thead>
-            <tr className="tr1">
-              <th>Seleccionar Semestre, Gestión y Año Correspondiente:</th>
-              <th>
-                <FormGroup>
-                  {/* <Label for="exampleSelect">Select</Label> */}
-                  <Input id="exampleSelect" name="semestre" type="select">
-                    <option>Primero</option>
-                    <option>Segundo</option>
-                    <option>Tercero</option>
-                    <option>Cuarto</option>
-                    <option>Quinto</option>
-                    <option>Sexto</option>
-                    <option>Septimo</option>
-                    <option>Octavo</option>
-                    <option>Noveno</option>
-                    <option>Decimo</option>
-                  </Input>
-                </FormGroup>
-              </th>
-              <th>
-                <FormGroup>
-                  {/* <Label for="exampleSelect">Select</Label> */}
-                  <Input id="exampleSelect" name="gestion" type="select">
-                    <option>I-Semestre</option>
-                    <option>II-Semestre</option>
-                  </Input>
-                </FormGroup>
-              </th>
-              <th colSpan={3}>
-                <Input placeholder="Año" />
-              </th>
-            </tr>
-            <tr className="text-center">
-              <th>Materias</th>
-              <th></th>
-              <th>Días</th>
-              <th colSpan={3}>Horas</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <Input placeholder="Materia: 1" />
-              </td>
-              <td></td>
-              <td>
+        <Form id="subt">
+          <Row>
+            <Col md={3}>
+              <Label>Seleccionar Año o Semestre Correspondiente:</Label>
+            </Col>
+            <Col md={3}>
+              <FormGroup>
+                <Input name="anio" type="select">
+                  <option>Primer</option>
+                  <option>Segundo</option>
+                  <option>Tercer</option>
+                  <option>Cuarto</option>
+                  <option>Quinto</option>
+                </Input>
                 <Input
-                  size={1}
-                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                  placeholder="Año"
+                  disabled
+                  onChange={handleChange}
+                  value={data.anio_carr}
                 />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Input placeholder="Materia: 2" />
-              </td>
-              <td></td>
-              <td>
+              </FormGroup>
+            </Col>
+            <Col md={3}>
+              <FormGroup>
+                {/* <Label for="exampleSelect">Select</Label> */}
+                <Input id="exampleSelect" name="semestre" type="select">
+                  <option>I-Semestre</option>
+                  <option>II-Semestre</option>
+                </Input>
                 <Input
-                  size={1}
-                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                  placeholder="Semestre"
+                  disabled
+                  onChange={handleChange}
+                  value={data.semestre}
                 />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Input placeholder="Materia: 3" />
-              </td>
-              <td></td>
-              <td>
-                <Input
-                  size={1}
-                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
-                />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Input placeholder="Materia: 4" />
-              </td>
-              <td></td>
-              <td>
-                <Input
-                  size={1}
-                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
-                />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Input placeholder="Materia: 5" />
-              </td>
-              <td></td>
-              <td>
-                <Input
-                  size={1}
-                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
-                />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Input placeholder="Materia: 6" />
-              </td>
-              <td></td>
-              <td>
-                <Input
-                  size={1}
-                  placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
-                />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Input placeholder="Materia: 7" />
-              </td>
-              <td></td>
-              <td>
-                <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-              <td>
-                <Input type="time" />
-              </td>
-            </tr>
-          </tbody>
-        </Table>
+              </FormGroup>
+            </Col>
+            <Col md={3}>
+              <FormGroup>
+                <Input type="text" onChange={handleChange} value={data.anio} />
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row className="text-center">
+            <Col md={3}>
+              <h5>Materias</h5>
+            </Col>
+            <Col md={3}>
+              <h5>Días</h5>
+            </Col>
+            <Col colSpan={3}>
+              <h5>Horas</h5>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Input
+                placeholder="Materia: 1"
+                onChange={handleChange}
+                value={data.mat_a1}
+              />
+            </Col>
+            <Col md={3}>
+              <Input
+                placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                onChange={handleChange}
+                value={data.dias_a1}
+              />
+            </Col>
+            <Col>
+              <Input type="text" onChange={handleChange} value={data.hor_a1} />
+            </Col>
+            <Col>
+              <Input type="text" onChange={handleChange} value={data.hor_a2} />
+            </Col>
+            <Col>
+              <Input type="text" onChange={handleChange} value={data.hor_a3} />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Input placeholder="Materia: 2" />
+            </Col>
+            <Col md={3}>
+              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Input placeholder="Materia: 3" />
+            </Col>
+            <Col md={3}>
+              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Input placeholder="Materia: 4" />
+            </Col>
+            <Col md={3}>
+              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Input placeholder="Materia: 5" />
+            </Col>
+            <Col md={3}>
+              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Input placeholder="Materia: 6" />
+            </Col>
+            <Col md={3}>
+              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Input placeholder="Materia: 7" />
+            </Col>
+            <Col md={3}>
+              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+            <Col>
+              <Input type="time" />
+            </Col>
+          </Row>
+          <div id="fotb">
+            <Button color="success" size="lg" onClick={() => peticionPut()}>
+              Guardar
+            </Button>
+          </div>
+        </Form>
         <Pagination
           aria-label="Page navigation example"
-          className="pagination justify-content-center"
-        >
+          className="pagination justify-content-center">
           <PaginationItem disabled>
             <PaginationLink first href="#" />
           </PaginationItem>
@@ -262,6 +336,6 @@ const Horarios1 = (props) => {
       </div>
     </div>
   );
-};
+}
 
 export default Horarios1;

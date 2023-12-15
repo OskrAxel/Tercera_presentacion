@@ -39,6 +39,7 @@ import RegPer from "./Pages/Per/RegPer";
 import Notas from "./Pages/Bec/notas";
 import PdfConv2 from "./Pages/Bec/PdfConv2";
 import Pdfman1 from "./Pages/Bec/Pdfman1";
+import Reg_hor from "./Pages/Bec/Horarios/Reg_horarios";
 
 function AppAdm() {
   return (
@@ -89,6 +90,10 @@ function AppAdm() {
             <Route
               path="/regcomp"
               element={<Protected Component={RegComp} />}
+            />
+            <Route
+              path="/reg_hor"
+              element={<Protected Component={Reg_hor} />}
             />
             <Route
               path="/horarios1"

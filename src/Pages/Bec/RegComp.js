@@ -19,8 +19,8 @@ function RegComp() {
     nom_pad: "",
     nom_mad: "",
   });
-  const iduser = localStorage.getItem("iduser");
-  let id = "ocusi"; //////aqui se configura el usuiario
+  // const iduser = localStorage.getItem("iduser");
+  // let id = "ocusi"; //////aqui se configura el usuiario
   ///
   const handleChange = (e) => {
     const { name, value } = e.target;

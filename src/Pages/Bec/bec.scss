@@ -21,6 +21,11 @@
 #subt {
   padding: 20px;
 }
+#fotb {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+}
 .page-item.active .page-link {
   z-index: 3;
   color: #ffffff;
