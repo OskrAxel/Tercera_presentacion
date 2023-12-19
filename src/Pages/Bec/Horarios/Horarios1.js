@@ -9,7 +9,6 @@ import {
   Form,
   Row,
   Col,
-  Label,
 } from "reactstrap";
 import "../bec.scss";
 import axios from "axios";
@@ -17,21 +16,47 @@ import axios from "axios";
 function Horarios1() {
   const [data, setData] = useState({
     id: "",
-    mat_1: "",
-    apellido: "",
-    email: "",
-    id_bec: "",
-    carrera: "",
-    celular: "",
-    institucion: "",
+    idBec: "",
+    mat_a1: "",
+    hor_a1: "",
+    hor_a2: "",
+    hor_a3: "",
+    dias_a1: "",
+    mat_b1: "",
+    hor_b1: "",
+    hor_b2: "",
+    hor_b3: "",
+    dias_b1: "",
+    mat_c1: "",
+    hor_c1: "",
+    hor_c2: "",
+    hor_c3: "",
+    dias_c1: "",
+    mat_d1: "",
+    hor_d1: "",
+    hor_d2: "",
+    hor_d3: "",
+    dias_d1: "",
+    mat_e1: "",
+    hor_e1: "",
+    hor_e2: "",
+    hor_e3: "",
+    dias_e1: "",
+    mat_f1: "",
+    hor_f1: "",
+    hor_f2: "",
+    hor_f3: "",
+    dias_f1: "",
+    mat_g1: "",
+    hor_g1: "",
+    hor_g2: "",
+    hor_g3: "",
+    dias_g1: "",
+    semestre: "",
     anio: "",
-    ciudad: "",
-    direccion: "",
-    nom_pad: "",
-    nom_mad: "",
+    anio_carr: "",
   });
-  // const iduser = localStorage.getItem("iduser");
-  // let id = "ocusi"; //////aqui se configura el usuiario
+  const iduser = localStorage.getItem("iduser");
   ///
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -59,22 +84,50 @@ function Horarios1() {
   };
   const peticionPut = async () => {
     var f = new FormData();
-    f.append("nombre", data.nombre);
-    f.append("apellido", data.apellido);
-    f.append("email", data.email);
-    f.append("id_bec", data.id_bec);
-    f.append("carrera", data.carrera);
-    f.append("celular", data.celular);
-    f.append("institucion", data.institucion);
+    ///)
+    f.append("semestre", data.semestre);
     f.append("anio", data.anio);
-    f.append("ciudad", data.ciudad);
-    f.append("direccion", data.direccion);
-    f.append("nom_pad", data.nom_pad);
-    f.append("nom_mad", data.nom_mad);
+    f.append("anio_carr", data.anio_carr);
+    f.append("mat_a1", data.mat_a1);
+    f.append("hor_a1", data.hor_a1);
+    f.append("hor_a2", data.hor_a2);
+    f.append("hor_a3", data.hor_a3);
+    f.append("dias_a1", data.dias_a1);
+    f.append("mat_b1", data.mat_b1);
+    f.append("hor_b1", data.hor_b1);
+    f.append("hor_b2", data.hor_b2);
+    f.append("hor_b3", data.hor_b3);
+    f.append("dias_b1", data.dias_b1);
+    f.append("mat_c1", data.mat_c1);
+    f.append("hor_c1", data.hor_c1);
+    f.append("hor_c2", data.hor_c2);
+    f.append("hor_c3", data.hor_c3);
+    f.append("dias_c1", data.dias_c1);
+    f.append("mat_d1", data.mat_d1);
+    f.append("hor_d1", data.hor_d1);
+    f.append("hor_d2", data.hor_d2);
+    f.append("hor_d3", data.hor_d3);
+    f.append("dias_d1", data.dias_d1);
+    f.append("mat_e1", data.mat_e1);
+    f.append("hor_e1", data.hor_e1);
+    f.append("hor_e2", data.hor_e2);
+    f.append("hor_e3", data.hor_e3);
+    f.append("dias_e1", data.dias_e1);
+    f.append("mat_f1", data.mat_f1);
+    f.append("hor_f1", data.hor_f1);
+    f.append("hor_f2", data.hor_f2);
+    f.append("hor_f3", data.hor_f3);
+    f.append("dias_f1", data.dias_f1);
+    f.append("mat_g1", data.mat_g1);
+    f.append("hor_g1", data.hor_g1);
+    f.append("hor_g2", data.hor_g2);
+    f.append("hor_g3", data.hor_g3);
+    f.append("dias_g1", data.dias_g1);
+    ///
     f.append("METHOD", "PUT");
     await axios
-      .post(`http://localhost:80/api/bec/bec.php`, f, {
-        params: { id: data.id },
+      .post(`http://localhost:80/api/bec/horario.php`, f, {
+        params: { id: data.idBec },
       })
       .then((response) => {
         setData(response);
@@ -103,20 +156,15 @@ function Horarios1() {
         <Form id="subt">
           <Row>
             <Col md={3}>
-              <Label>Seleccionar Año o Semestre Correspondiente:</Label>
+              <h5>Seleccionar Año o Semestre Correspondiente:</h5>
+              {iduser}
             </Col>
             <Col md={3}>
               <FormGroup>
-                <Input name="anio" type="select">
-                  <option>Primer</option>
-                  <option>Segundo</option>
-                  <option>Tercer</option>
-                  <option>Cuarto</option>
-                  <option>Quinto</option>
-                </Input>
                 <Input
+                  name="anio_carr"
+                  type="text"
                   placeholder="Año"
-                  disabled
                   onChange={handleChange}
                   value={data.anio_carr}
                 />
@@ -124,14 +172,10 @@ function Horarios1() {
             </Col>
             <Col md={3}>
               <FormGroup>
-                {/* <Label for="exampleSelect">Select</Label> */}
-                <Input id="exampleSelect" name="semestre" type="select">
-                  <option>I-Semestre</option>
-                  <option>II-Semestre</option>
-                </Input>
                 <Input
-                  placeholder="Semestre"
-                  disabled
+                  name="semestre"
+                  type="text"
+                  placeholder="I-Semestre"
                   onChange={handleChange}
                   value={data.semestre}
                 />
@@ -139,7 +183,12 @@ function Horarios1() {
             </Col>
             <Col md={3}>
               <FormGroup>
-                <Input type="text" onChange={handleChange} value={data.anio} />
+                <Input
+                  name="anio"
+                  type="text"
+                  onChange={handleChange}
+                  value={data.anio}
+                />
               </FormGroup>
             </Col>
           </Row>
@@ -157,6 +206,8 @@ function Horarios1() {
           <Row>
             <Col md={3}>
               <Input
+                name="mat_a1"
+                type="text"
                 placeholder="Materia: 1"
                 onChange={handleChange}
                 value={data.mat_a1}
@@ -164,121 +215,300 @@ function Horarios1() {
             </Col>
             <Col md={3}>
               <Input
+                name="dias_a1"
+                type="text"
                 placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
                 onChange={handleChange}
                 value={data.dias_a1}
               />
             </Col>
             <Col>
-              <Input type="text" onChange={handleChange} value={data.hor_a1} />
+              <Input
+                name="hor_a1"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_a1}
+              />
             </Col>
             <Col>
-              <Input type="text" onChange={handleChange} value={data.hor_a2} />
+              <Input
+                name="hor_a2"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_a2}
+              />
             </Col>
             <Col>
-              <Input type="text" onChange={handleChange} value={data.hor_a3} />
+              <Input
+                name="hor_a3"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_a3}
+              />
             </Col>
           </Row>
           <Row>
             <Col md={3}>
-              <Input placeholder="Materia: 2" />
+              <Input
+                name="mat_b1"
+                type="text"
+                placeholder="Materia: 2"
+                onChange={handleChange}
+                value={data.mat_b1}
+              />
             </Col>
             <Col md={3}>
-              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+              <Input
+                name="dias_b1"
+                type="text"
+                placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                onChange={handleChange}
+                value={data.dias_b1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_b1"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_b1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_b2"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_b2}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_b3"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_b3}
+              />
             </Col>
           </Row>
           <Row>
             <Col md={3}>
-              <Input placeholder="Materia: 3" />
+              <Input
+                name="mat_c1"
+                type="text"
+                placeholder="Materia: 3"
+                onChange={handleChange}
+                value={data.mat_c1}
+              />
             </Col>
             <Col md={3}>
-              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+              <Input
+                name="dias_c1"
+                type="text"
+                placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                onChange={handleChange}
+                value={data.dias_c1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_c1"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_c1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_c2"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_c2}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_c3"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_c3}
+              />
             </Col>
           </Row>
           <Row>
             <Col md={3}>
-              <Input placeholder="Materia: 4" />
+              <Input
+                name="mat_d1"
+                type="text"
+                placeholder="Materia: 4"
+                onChange={handleChange}
+                value={data.mat_d1}
+              />
             </Col>
             <Col md={3}>
-              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+              <Input
+                name="dias_d1"
+                type="text"
+                placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                onChange={handleChange}
+                value={data.dias_d1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_d1"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_d1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_d2"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_d2}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_d3"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_d3}
+              />
             </Col>
           </Row>
           <Row>
             <Col md={3}>
-              <Input placeholder="Materia: 5" />
+              <Input
+                name="mat_e1"
+                type="text"
+                placeholder="Materia: 5"
+                onChange={handleChange}
+                value={data.mat_e1}
+              />
             </Col>
             <Col md={3}>
-              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+              <Input
+                name="dias_e1"
+                type="text"
+                placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                onChange={handleChange}
+                value={data.dias_e1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_e1"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_e1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_e2"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_e2}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_e3"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_e3}
+              />
             </Col>
           </Row>
           <Row>
             <Col md={3}>
-              <Input placeholder="Materia: 6" />
+              <Input
+                name="mat_f1"
+                type="text"
+                placeholder="Materia: 6"
+                onChange={handleChange}
+                value={data.mat_f1}
+              />
             </Col>
             <Col md={3}>
-              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+              <Input
+                name="dias_f1"
+                type="text"
+                placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                onChange={handleChange}
+                value={data.dias_f1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_f1"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_f1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_f2"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_f2}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_f3"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_f3}
+              />
             </Col>
           </Row>
           <Row>
             <Col md={3}>
-              <Input placeholder="Materia: 7" />
+              <Input
+                name="mat_g1"
+                type="text"
+                placeholder="Materia: 7"
+                onChange={handleChange}
+                value={data.mat_g1}
+              />
             </Col>
             <Col md={3}>
-              <Input placeholder="Lunes, Martes, Miércoles, Jueves, Viernes" />
+              <Input
+                name="dias_g1"
+                type="text"
+                placeholder="Lunes, Martes, Miércoles, Jueves, Viernes"
+                onChange={handleChange}
+                value={data.dias_g1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_g1"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_g1}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_g2"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_g2}
+              />
             </Col>
             <Col>
-              <Input type="time" />
+              <Input
+                name="hor_g3"
+                type="text"
+                onChange={handleChange}
+                value={data.hor_g3}
+              />
             </Col>
           </Row>
           <div id="fotb">

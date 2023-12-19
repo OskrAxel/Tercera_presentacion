@@ -19,24 +19,55 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 }
 if($_POST['METHOD']=='PUT'){
     unset($_POST['METHOD']);
-    $id=$_GET['id'];
-    $nombre=$_POST['nombre'];
-    $apellido=$_POST['apellido'];
-    $email=$_POST['email'];
-    $id_bec=$_POST['id_bec'];
-    $carrera=$_POST['carrera'];
-    $celular=$_POST['celular'];
-    $institucion=$_POST['institucion'];
+    ////
+    $iduser=$_GET['id'];
+    $semestre=$_POST['semestre'];
     $anio=$_POST['anio'];
-    $ciudad=$_POST['ciudad'];
-    $direccion=$_POST['direccion'];
-    $nom_pad=$_POST['nom_pad'];
-    $nom_mad=$_POST['nom_mad'];
-    $query="UPDATE usuarios_bec SET nombre='$nombre', apellido='$apellido',
-    email='$email', id_bec='$id_bec', carrera='$carrera',
-    celular='$celular', institucion='$institucion', anio='$anio',
-    ciudad='$ciudad', direccion='$direccion' , nom_pad='$nom_pad'
-    , nom_mad='$nom_mad' WHERE id='$id'";
+    $anio_carr=$_POST['anio_carr'];
+    $mat_a1=$_POST['mat_a1'];
+    $hor_a1=$_POST['hor_a1'];
+    $hor_a2=$_POST['hor_a2'];
+    $hor_a3=$_POST['hor_a3'];
+    $dias_a1=$_POST['dias_a1'];
+    $mat_b1=$_POST['mat_b1'];
+    $hor_b1=$_POST['hor_b1'];
+    $hor_b2=$_POST['hor_b2'];
+    $hor_b3=$_POST['hor_b3'];
+    $dias_b1=$_POST['dias_b1'];
+    $mat_c1=$_POST['mat_c1'];
+    $hor_c1=$_POST['hor_c1'];
+    $hor_c2=$_POST['hor_c2'];
+    $hor_c3=$_POST['hor_c3'];
+    $dias_c1=$_POST['dias_c1'];
+    $mat_d1=$_POST['mat_d1'];
+    $hor_d1=$_POST['hor_d1'];
+    $hor_d2=$_POST['hor_d2'];
+    $hor_d3=$_POST['hor_d3'];
+    $dias_d1=$_POST['dias_d1'];
+    $mat_e1=$_POST['mat_e1'];
+    $hor_e1=$_POST['hor_e1'];
+    $hor_e2=$_POST['hor_e2'];
+    $hor_e3=$_POST['hor_e3'];
+    $dias_e1=$_POST['dias_e1'];
+    $mat_f1=$_POST['mat_f1'];
+    $hor_f1=$_POST['hor_f1'];
+    $hor_f2=$_POST['hor_f2'];
+    $hor_f3=$_POST['hor_f3'];
+    $dias_f1=$_POST['dias_f1'];
+    $mat_g1=$_POST['mat_g1'];
+    $hor_g1=$_POST['hor_g1'];
+    $hor_g2=$_POST['hor_g2'];
+    $hor_g3=$_POST['hor_g3'];
+    $dias_g1=$_POST['dias_g1'];
+    ////
+    $query="UPDATE horario1 SET semestre='$semestre',anio='$anio',anio_carr='$anio_carr',
+    mat_a1='$mat_a1',hor_a1='$hor_a1',hor_a2='$hor_a2',hor_a3='$hor_a3',dias_a1='$dias_a1',
+    mat_b1='$mat_b1',hor_b1='$hor_b1',hor_b2='$hor_b2',hor_b3='$hor_b3',dias_b1='$dias_b1',
+    mat_c1='$mat_c1',hor_c1='$hor_c1',hor_c2='$hor_c2',hor_c3='$hor_c3',dias_c1='$dias_c1',
+    mat_d1='$mat_d1',hor_d1='$hor_d1',hor_d2='$hor_d2',hor_d3='$hor_d3',dias_d1='$dias_d1',
+    mat_e1='$mat_e1',hor_e1='$hor_e1',hor_e2='$hor_e2',hor_e3='$hor_e3',dias_e1='$dias_e1',
+    mat_f1='$mat_f1',hor_f1='$hor_f1',hor_f2='$hor_f2',hor_f3='$hor_f3',dias_f1='$dias_f1',
+    mat_g1='$mat_g1',hor_g1='$hor_g1',hor_g2='$hor_g2',hor_g3='$hor_g3',dias_g1='$dias_g1' where idBec='$iduser'";
     $resultado=metodoPut($query);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");
