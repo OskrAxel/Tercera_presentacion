@@ -56,7 +56,7 @@ function Horarios1() {
     anio: "",
     anio_carr: "",
   });
-  const iduser = localStorage.getItem("iduser");
+  // const iduser = localStorage.getItem("iduser");
   ///
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -157,7 +157,6 @@ function Horarios1() {
           <Row>
             <Col md={3}>
               <h5>Seleccionar Año o Semestre Correspondiente:</h5>
-              {iduser}
             </Col>
             <Col md={3}>
               <FormGroup>

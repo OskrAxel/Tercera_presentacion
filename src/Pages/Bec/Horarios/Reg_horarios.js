@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Table,
-  FormGroup,
-  Input,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-} from "reactstrap";
+import { Table, FormGroup, Input } from "reactstrap";
 import "../bec.scss";
 
 const Reg_hor = (props) => {

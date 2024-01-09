@@ -15,8 +15,7 @@ function Regper() {
     institucion: "",
     anio_inicio: "",
   });
-  const user = localStorage.getItem("user");
-  let id = 1; //////aqui se configura el usuiario
+  const id = localStorage.getItem("user");
   ///
   const handleChange = (e) => {
     const { name, value } = e.target;
