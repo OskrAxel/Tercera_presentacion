@@ -26,17 +26,12 @@ const SidebarBec = () => {
       icon: <FaIcons.FaRegAddressBook />,
     },
     {
-      path: "reg_hor",
-      name: "Registrar Horario",
-      icon: <FaIcons.FaUserGraduate />,
-    },
-    {
       path: "horarios1",
       name: "Ver Horarios",
       icon: <FaIcons.FaUserGraduate />,
     },
     {
-      path: "notas",
+      path: "nota1",
       name: "Notas",
       icon: <FaIcons.FaUsers />,
     },

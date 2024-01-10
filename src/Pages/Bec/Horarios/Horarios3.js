@@ -69,7 +69,7 @@ function Horarios3() {
   ///
   const peticionGet = async () => {
     await axios
-      .get(`http://localhost:80/api/bec/horario.php`, {
+      .get(`http://localhost:80/api/bec/horario3.php`, {
         params: {
           id: localStorage.getItem("iduser"),
         },
@@ -126,7 +126,7 @@ function Horarios3() {
     ///
     f.append("METHOD", "PUT");
     await axios
-      .post(`http://localhost:80/api/bec/horario.php`, f, {
+      .post(`http://localhost:80/api/bec/horario3.php`, f, {
         params: { id: data.idBec },
       })
       .then((response) => {

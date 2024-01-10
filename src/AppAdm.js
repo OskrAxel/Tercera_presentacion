@@ -36,10 +36,9 @@ import Pdf2 from "./Pages/Per/pdfconv";
 import Pdfman from "./Pages/Per/pdfman";
 import Ini from "./Pages/Per/Index";
 import RegPer from "./Pages/Per/RegPer";
-import Notas from "./Pages/Bec/notas";
 import PdfConv2 from "./Pages/Bec/PdfConv2";
 import Pdfman1 from "./Pages/Bec/Pdfman1";
-import Reg_hor from "./Pages/Bec/Horarios/Reg_horarios";
+import Nota1 from "./Pages/Bec/Notas/Nota1";
 
 function AppAdm() {
   return (
@@ -91,10 +90,7 @@ function AppAdm() {
               path="/regcomp"
               element={<Protected Component={RegComp} />}
             />
-            <Route
-              path="/reg_hor"
-              element={<Protected Component={Reg_hor} />}
-            />
+            <Route path="/nota1" element={<Protected Component={Nota1} />} />
             <Route
               path="/horarios1"
               element={<Protected Component={Horarios1} />}
@@ -135,7 +131,6 @@ function AppAdm() {
               path="/horarios10"
               element={<Protected Component={Horarios10} />}
             />
-            <Route path="/notas" element={<Protected Component={Notas} />} />
             <Route
               path="/clients"
               element={<Protected Component={Clients} />}
