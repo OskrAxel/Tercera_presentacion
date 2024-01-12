@@ -35,11 +35,6 @@ const SidebarBec = () => {
       name: "Notas",
       icon: <FaIcons.FaUsers />,
     },
-    {
-      path: "clients",
-      name: "Clients",
-      icon: <FaIcons.FaBuilding />,
-    },
   ];
   return (
     <div>

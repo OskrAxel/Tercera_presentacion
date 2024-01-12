@@ -13,7 +13,7 @@ import {
 import "../bec.scss";
 import axios from "axios";
 
-function Nota1() {
+function Nota3() {
   const [data, setData] = useState({
     id: "",
     idBec: "",
@@ -59,7 +59,7 @@ function Nota1() {
   ///
   const peticionGet = async () => {
     await axios
-      .get(`http://localhost:80/api/bec/nota1.php`, {
+      .get(`http://localhost:80/api/bec/nota3.php`, {
         params: {
           id: localStorage.getItem("iduser"),
         },
@@ -93,7 +93,7 @@ function Nota1() {
     ///
     f.append("METHOD", "PUT");
     await axios
-      .post(`http://localhost:80/api/bec/nota1.php`, f, {
+      .post(`http://localhost:80/api/bec/nota3.php`, f, {
         params: { id: data.idBec },
       })
       .then((response) => {
@@ -119,9 +119,11 @@ function Nota1() {
               Registrar Notas
             </DropdownToggle>
             <DropdownMenu className="drop-menu">
-              <DropdownItem disabled>Primer Semestre</DropdownItem>
+              <DropdownItem href="./nota1">Primer Semestre</DropdownItem>
               <DropdownItem href="./nota2">Segundo Semestre</DropdownItem>
-              <DropdownItem href="./nota3">Tercer Semestre</DropdownItem>
+              <DropdownItem disabled href="./nota3">
+                Tercer Semestre
+              </DropdownItem>
               <DropdownItem href="./nota4">Cuarto Semestre</DropdownItem>
               <DropdownItem href="./nota5">Quinto Semestre</DropdownItem>
               <DropdownItem href="./nota6">Sexto Semestre</DropdownItem>
@@ -434,4 +436,4 @@ function Nota1() {
   );
 }
 
-export default Nota1;
+export default Nota3;

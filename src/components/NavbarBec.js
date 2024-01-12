@@ -23,6 +23,7 @@ import {
 } from "reactstrap";
 import { Outlet, useNavigate } from "react-router-dom";
 import SidebarBec from "./SidebarBec";
+
 function NavbarBec(args) {
   const naviget = useNavigate();
   function logoutSubmit() {
@@ -54,6 +55,17 @@ function NavbarBec(args) {
   const abrirCerrarModalInsertar = () => {
     setModalInsertar(!modalInsertar);
   };
+  ////
+  const [modalFoto, setModalFoto] = useState(false);
+  const abrirCerrarModalFoto = () => {
+    setModalFoto(!modalFoto);
+  };
+  const [foto, setFoto] = useState([]);
+  async function getImagenes() {
+    const res = await axios.get("http://localhost:80/api/bec/foto.php");
+    setFoto(res.data);
+    console.log(res.data);
+  }
   ////
   return (
     <div>
@@ -96,9 +108,12 @@ function NavbarBec(args) {
                 </DropdownItem>
                 <DropdownItem>Sobre Nosotros...</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>Perfil</DropdownItem>
-                <DropdownItem>Foto</DropdownItem>
-                <DropdownItem>Cambiar Contraseña</DropdownItem>
+                <DropdownItem onClick={() => abrirCerrarModalFoto()}>
+                  Foto
+                </DropdownItem>
+                <DropdownItem onClick={() => abrirCerrarModalInsertar()}>
+                  Cambiar Contraseña
+                </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem onClick={logoutSubmit}>Salir</DropdownItem>
               </DropdownMenu>
@@ -106,6 +121,7 @@ function NavbarBec(args) {
           </Nav>
         </Collapse>
       </Navbar>
+      {/* MODAL INFORME */}
       <Modal isOpen={modalInsertar}>
         <ModalHeader>Cargar documento</ModalHeader>
         <ModalBody>
@@ -148,6 +164,61 @@ function NavbarBec(args) {
             color="danger"
             size="lg"
             onClick={() => abrirCerrarModalInsertar()}>
+            Cancelar
+          </Button>
+        </ModalFooter>
+      </Modal>
+      {/* MODAL INFORME */}
+      <Modal isOpen={modalFoto}>
+        <ModalHeader
+          style={{ color: "white", background: "rgba(18, 80, 61, .85)" }}>
+          Modificar Imagen
+        </ModalHeader>
+        <ModalBody>
+          <div className="form-group">
+            <label>Imagen Actual: </label>
+            <br />
+            <input
+              type="text"
+              className="form-control"
+              name="nom_doc"
+              onChange={(e) => setNom(e.target.value)}
+            />
+            <img
+              src={"data:archivo_per/png;base64," + item.archivo_per}
+              className="img-fluid"
+              alt="archivo_per"
+            />
+            <br />
+            <label>Usuario: </label>
+            <br />
+            <input
+              type="text"
+              className="form-control"
+              name="nom_usu"
+              onChange={(e) => setDescripcion(e.target.value)}
+            />
+            <br />
+            <label>Nueva Imagen: </label>
+            <br />
+            <input
+              type="file"
+              className="form-control"
+              accept="archivo_per/*"
+              onChange={(e) => setImagen(e.target.files[0])}
+              multiple
+            />
+            <br />
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="success" size="lg" onClick={(e) => addImagen(e)}>
+            Guardar
+          </Button>
+          <Button
+            color="danger"
+            size="lg"
+            onClick={() => abrirCerrarModalFoto()}>
             Cancelar
           </Button>
         </ModalFooter>

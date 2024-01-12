@@ -39,6 +39,15 @@ import RegPer from "./Pages/Per/RegPer";
 import PdfConv2 from "./Pages/Bec/PdfConv2";
 import Pdfman1 from "./Pages/Bec/Pdfman1";
 import Nota1 from "./Pages/Bec/Notas/Nota1";
+import Nota2 from "./Pages/Bec/Notas/Nota2";
+import Nota3 from "./Pages/Bec/Notas/Nota3";
+import Nota4 from "./Pages/Bec/Notas/Nota4";
+import Nota5 from "./Pages/Bec/Notas/Nota5";
+import Nota6 from "./Pages/Bec/Notas/Nota6";
+import Nota7 from "./Pages/Bec/Notas/Nota7";
+import Nota8 from "./Pages/Bec/Notas/Nota8";
+import Nota9 from "./Pages/Bec/Notas/Nota9";
+import Nota10 from "./Pages/Bec/Notas/Nota10";
 
 function AppAdm() {
   return (
@@ -91,6 +100,15 @@ function AppAdm() {
               element={<Protected Component={RegComp} />}
             />
             <Route path="/nota1" element={<Protected Component={Nota1} />} />
+            <Route path="/nota2" element={<Protected Component={Nota2} />} />
+            <Route path="/nota3" element={<Protected Component={Nota3} />} />
+            <Route path="/nota4" element={<Protected Component={Nota4} />} />
+            <Route path="/nota5" element={<Protected Component={Nota5} />} />
+            <Route path="/nota6" element={<Protected Component={Nota6} />} />
+            <Route path="/nota7" element={<Protected Component={Nota7} />} />
+            <Route path="/nota8" element={<Protected Component={Nota8} />} />
+            <Route path="/nota9" element={<Protected Component={Nota9} />} />
+            <Route path="/nota10" element={<Protected Component={Nota10} />} />
             <Route
               path="/horarios1"
               element={<Protected Component={Horarios1} />}
